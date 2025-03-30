@@ -3,7 +3,7 @@ import logging
 import datetime
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ContextTypes, ConversationHandler
-from sheets import append_row_to_sheet
+from sheets import record_expense  # Используем record_expense вместо append_row_to_sheet
 
 logger = logging.getLogger(__name__)
 
@@ -12,15 +12,20 @@ async def start_report_issue(update: Update, context: ContextTypes.DEFAULT_TYPE)
     user_id = update.effective_user.id
     logger.info(f"User {user_id}: Начало сообщения о проблеме")
     await update.callback_query.edit_message_text("Опишите проблему:")
-    return 1  # Используем 1 вместо ENTER_ISSUE
+    return 1
 
 async def save_issue(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     user_id = update.effective_user.id
     issue_text = update.message.text
     username = update.effective_user.username or "unknown"
     date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    row = [str(user_id), date, username, issue_text]
-    append_row_to_sheet("Ошибки", row)
+    login = str(context.user_data.get("login", "unknown"))
+    # Получаем ФИО сотрудника, как в других модулях
+    employee_data = next((emp for emp in caches["employees"] if str(emp["Логин"]) == login), None)
+    user = employee_data["Ф.И.О"] if employee_data else login
+    # Формат записи совместим с record_expense (как в expense.py)
+    record = [date, "Ошибка", user, "", "", issue_text, "", "", "", "", str(user_id)]
+    record_expense([record])
     logger.info(f"User {user_id}: Проблема сохранена: {issue_text}")
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")]])
     await update.message.reply_text("Проблема записана!", reply_markup=reply_markup)
