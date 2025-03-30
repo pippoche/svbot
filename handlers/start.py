@@ -92,6 +92,9 @@ async def main_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
         keyboard.append([InlineKeyboardButton("Внести объемы материалов", callback_data="volumes")])
     if permissions.get("Обновление КЭШ-а", False):
         keyboard.append([InlineKeyboardButton("Обновление КЭШ-а", callback_data="refresh_cache")])
+    # Добавлена кнопка "Сообщить о проблеме" с проверкой разрешения
+    if permissions.get("Сообщить о проблеме", False):
+        keyboard.append([InlineKeyboardButton("Сообщить о проблеме", callback_data="report_issue")])
     keyboard.append([InlineKeyboardButton("Сбросить данные входа", callback_data="reset_login")])
     text = f"Добро пожаловать, {role}! Выберите действие:"
     if update.message:

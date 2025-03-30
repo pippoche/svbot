@@ -93,31 +93,28 @@ async def submit_expense(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     if query.data == "main_menu":
         from handlers.start import back_to_menu
         await back_to_menu(update, context)
+        logger.debug(f"User {user_id}: Нажата кнопка 'Вернуться в меню' в submit_expense")
         return ConversationHandler.END
     project = context.user_data.get("expense_project", "unknown")
     details = context.user_data.get("expense_details", {})
     login = str(context.user_data.get("login", "unknown"))  # Приводим к строке
     employee_data = next((emp for emp in caches["employees"] if str(emp["Логин"]) == login), None)
     user = employee_data["Ф.И.О"] if employee_data else login  # ФИО или логин
-    logger.debug(f"User {user_id}: Login={login}, Employee_data={employee_data}, User={user}")  # Отладка
     date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     total_price = details["quantity"] * details["amount"]
     direction = "Накладные" if project == "Накладные" else context.user_data.get("department", "Строительство")
-    record = [
-        date, "Расход", user, "Наличные", direction, details["name"], details["quantity"], details["unit"], "", details["amount"], project
-    ]
+    record = [date, "Расход", user, "Наличные", direction, details["name"], details["quantity"], details["unit"], "", details["amount"], project]
     if record_expense([record]):
+        text = f"Расход '{details['name']}' на сумму {total_price} для '{project}' (отдел: {direction}) успешно записан!"
         await query.edit_message_text(
-            f"Расход '{details['name']}' на сумму {total_price} для '{project}' (отдел: {direction}) успешно записан!",
+            text,
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")]])
         )
         logger.info(f"User {user_id}: Расход записан для проекта {project}")
-        context.user_data.clear()  # Очищаем данные после успеха
     else:
         await query.edit_message_text(
             "Ошибка при записи расхода.",
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")]])
         )
         logger.error(f"User {user_id}: Ошибка записи расхода для проекта {project}")
-        context.user_data.clear()  # Очищаем данные при ошибке
     return ConversationHandler.END
