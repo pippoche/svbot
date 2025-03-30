@@ -7,14 +7,12 @@ from sheets import append_row_to_sheet
 
 logger = logging.getLogger(__name__)
 
-ENTER_ISSUE = 1
-
 async def start_report_issue(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     await update.callback_query.answer()
     user_id = update.effective_user.id
     logger.info(f"User {user_id}: Начало сообщения о проблеме")
     await update.callback_query.edit_message_text("Опишите проблему:")
-    return ENTER_ISSUE
+    return 1  # Используем 1 вместо ENTER_ISSUE
 
 async def save_issue(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     user_id = update.effective_user.id

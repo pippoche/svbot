@@ -1,6 +1,7 @@
 # bot_handlers.py
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters, ConversationHandler
 from handlers import start, write_off, expense, project, status_change, ferma_write_off, delivery, instrument, new_instrument, web_write_off, purchase
+from handlers.report_issue import start_report_issue, save_issue, back_to_menu  # Добавлен импорт для report_issue
 import logging
 
 logger = logging.getLogger(__name__)
@@ -40,7 +41,6 @@ def register_handlers(application: Application):
     )
     application.add_handler(write_off_conv)
 
-    # Остальные обработчики остаются без изменений (expense_conv, ferma_conv и т.д.)
     expense_conv = ConversationHandler(
         entry_points=[CallbackQueryHandler(expense.start_add_expense, pattern="add_expense")],
         states={
@@ -145,3 +145,14 @@ def register_handlers(application: Application):
     application.add_handler(CallbackQueryHandler(web_write_off.start_web_write_off, pattern="volumes"))
     application.add_handler(CallbackQueryHandler(start.refresh_cache, pattern="refresh_cache"))
     application.add_handler(CallbackQueryHandler(start.back_to_menu, pattern="main_menu"))
+
+    # Добавлен обработчик для "Сообщить о проблеме"
+    report_issue_conv = ConversationHandler(
+        entry_points=[CallbackQueryHandler(start_report_issue, pattern="^report_issue$")],
+        states={
+            1: [MessageHandler(filters.TEXT & ~filters.COMMAND, save_issue)],
+        },
+        fallbacks=[CallbackQueryHandler(back_to_menu, pattern="^main_menu$")],
+        per_message=False
+    )
+    application.add_handler(report_issue_conv)
