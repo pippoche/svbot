@@ -8,7 +8,7 @@
             "Статус": "проект готов",
             "Дата создания": "28.02.2025",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1VAwno6IbAIQU1ZrXwTfiDGyyrwD2ax2YmnNTZzHpiGA/edit?usp=drivesdk",
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1VAwno6IbAIQU1ZrXwTfiDGyyrwD2ax2YmnNTZzHpiGA/edit",
             "Резервная копия": ""
         },
         {
@@ -16,11 +16,11 @@
             "Ф.И.О заказчика": "Кощеев А.С.",
             "Номер договора": "13-13/СВ",
             "Тип сделки": "Строительство",
-            "Статус": "Приостановлен",
+            "Статус": "проект готов",
             "Дата создания": "28.02.2025",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1ubbG8aDBlqiVZM-lJQNnEddlowsP76YI7ltRR6GaPGo/edit",
-            "Резервная копия": "https://docs.google.com/spreadsheets/d/1nl0PJqENNhu39cu7pgm8vEs_uWcYVz44JiIMYmAIIQY/edit?usp=drivesdk"
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1i-cSnqupg82dK1DLnT0ngb_vTHuBW1h2xdQ80ThoDJg/edit",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1Ow9VVuVng7rLpf88HSs2UfB8NTqw2doFxSXJreCwkv0/edit?usp=drivesdk"
         },
         {
             "ID проекта": 56,
@@ -280,11 +280,11 @@
             "Ф.И.О заказчика": "Накладные расходы",
             "Номер договора": "",
             "Тип сделки": "Накладные",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "2025-03-06 12:00:00",
             "Примечание": "",
-            "Ссылка на отчёт": "",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/13VnsBEB9bGgCN4orjQRY0XIE6YLbZb1KE9JE5uu8ba8/edit",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/11HCXLGCQsXGn_kCoJ0lMIIX3-h3d6qJ1bcsUeXuCO50/edit?usp=drivesdk"
         },
         {
             "ID проекта": "",
@@ -346,11 +346,11 @@
             "Ф.И.О заказчика": "Пупкин К.К",
             "Номер договора": "1-12-1/КК",
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "2025-03-03 18:55:11",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1vs3d7-H__pkylTuu3n4synUGSd9WkUYDRl3y5YzmrA8/edit",
-            "Резервная копия": "https://docs.google.com/spreadsheets/d/1QKUrs9UgUlI3uUyv8lRudNtMzxL0Lkp8e-gfSNXISVA/edit?usp=drivesdk"
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1GlxVeqPpSTd4x0Cbd33qrGDIVWKwOBlGpO40R449GGc/edit",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1IesewCZbYNxW_musoh4XxEllgJFdGsqaHxzG44W-Gfg/edit?usp=drivesdk"
         },
         {
             "ID проекта": 60,
@@ -368,11 +368,11 @@
             "Ф.И.О заказчика": "Косых И.П",
             "Номер договора": "212-12/КК",
             "Тип сделки": "Строительство",
-            "Статус": "приостановлен",
+            "Статус": "проект готов",
             "Дата создания": "2025-02-28 14:42:52",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1kFr6ByO6XQ43cvnIE9bH9FnRHlmoANxSRM6ObJfqtg0/edit",
-            "Резервная копия": "https://docs.google.com/spreadsheets/d/177oZFAbCiXNrQqyrj6PVGaPHzgK2cdE61d96qc-pygA/edit?usp=drivesdk"
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/15jARlpUC5YkwPCtZLAWHy2hqVKsthJkFzQtsQ-RoU9o/edit",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1c20EAHFMoOG9Mvi4QwPo-tDyX5iEeyLTpjl_jztYO_I/edit?usp=drivesdk"
         },
         {
             "ID проекта": "",
@@ -500,11 +500,11 @@
             "Ф.И.О заказчика": "Так А.Д",
             "Номер договора": "2-2/АА",
             "Тип сделки": "Фермы",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "19.02.2025",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/167fTnpdVNxoS9kYQnOVBOKKVLrPOetG5eGPEYCzk4mc/edit",
-            "Резервная копия": "https://docs.google.com/spreadsheets/d/1fi4kmIPJelQZqUYSaKbNjvKi-ZaWd0hhvA97Gx8UGSw/edit?usp=drivesdk"
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1ZQ5tx56g6z7wbUvokiEKHR0r6hTeyVEJilnwPzHtdTg/edit",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1unQpz13Tbun5w2YlPDXzDcussChZUG4CMC3i2ggrJPs/edit?usp=drivesdk"
         },
         {
             "ID проекта": "",
@@ -566,22 +566,22 @@
             "Ф.И.О заказчика": "Так1 А.П",
             "Номер договора": "1-11/АА",
             "Тип сделки": "Домокомплект",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "19.02.2025",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1z4LNib_L-S-0AnBzKrs7rtX2qkNS9B-3Nb4BYVU5qHs/edit",
-            "Резервная копия": "https://docs.google.com/spreadsheets/d/1nuC-DJwV4eFAat8MfhRoddcGGmopPEEPdD9s7TSkoFc/edit?usp=drivesdk"
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1CO0xziJBRSiQW-vATzzDU6eSNUGn05S9k94c9LYUM5s/edit",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1DHw9JvWQhUSPZCRoikHFzgUoFWTeW2IjYYqWHbJVC-M/edit?usp=drivesdk"
         },
         {
             "ID проекта": "",
             "Ф.И.О заказчика": "Так2 А.Д",
             "Номер договора": "2-22/АА",
             "Тип сделки": "Фермы",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "19.02.2025",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1h1L0yDbgnCedgqWcc5F7f02jbx1gMqNOtPfJJl-_Ibs/edit",
-            "Резервная копия": "https://docs.google.com/spreadsheets/d/1kgoYdVlId8_Pb7909WSXi5Rvn_frszoQekhhVKn2zXM/edit?usp=drivesdk"
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1H6V8nTgHyRCnpNTaWvYI3ouW3UDZ7hmvIDEVc6cIhMA/edit",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1gDIGfOk6Sa14OCiv7sspCOlePJ_P1EvDXMN29-yCPrM/edit?usp=drivesdk"
         },
         {
             "ID проекта": "",
@@ -709,11 +709,11 @@
             "Ф.И.О заказчика": "петросян г.е.",
             "Номер договора": "100-20/кк",
             "Тип сделки": "Домокомплект",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "15.02.2025",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1mjbcsBF8g1wQ8G6br2pY-4wd3xQrV2qIvC6SkGVr19o/edit",
-            "Резервная копия": "https://docs.google.com/spreadsheets/d/1If6IJTEo5CNX1XhHgmQp0qiflUHgVI3uOV1D7mTWU3w/edit?usp=drivesdk"
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1aGTtOIdQnmOnsijAp8XwpsmvS5wIPVc4fMMQsHNO8vQ/edit",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1VJCuTFRQzclIbZgIxmHoRAWZCtfpJSoIBdkTp1vVewE/edit?usp=drivesdk"
         },
         {
             "ID проекта": 20,
@@ -742,33 +742,33 @@
             "Ф.И.О заказчика": "ываыва а.а",
             "Номер договора": "0110-01001/КК",
             "Тип сделки": "Домокомплект",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "15.02.2025",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1m4AZC7JPE-IIvs5qUaP4pAWhy0Zjb1eVPZd05izFd9E/edit",
-            "Резервная копия": "https://docs.google.com/spreadsheets/d/1QhqfLLo8-Q56ecNR_4RIcDgLFDPrL-OLYTpWprlABis/edit?usp=drivesdk"
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1alAFJGCUFbhOXxrud05Jnc1N4j8O-2T1vjebqXO1WPI/edit",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1z2hA_KfaaNH6Vaj4fMXYI41CUx2aY1ohCMbr-sOCnuE/edit?usp=drivesdk"
         },
         {
             "ID проекта": 26,
             "Ф.И.О заказчика": "апр р р",
             "Номер договора": "33-33-33",
             "Тип сделки": "Фермы",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "15.02.2025",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1iHeA7ciuf4SZTEbKP6ZsvEc2ZVwoJBFJ-lladtWqiDI/edit",
-            "Резервная копия": "https://docs.google.com/spreadsheets/d/1NaR2tfBYCiflasmdJWb8zkcLm3HPUjFtJCIy1ZeZZH0/edit?usp=drivesdk"
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1_PZqp6t3M5rL5K_AjSZCmZecF83XUr3ldJLRKsanjgE/edit",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1eVORmcbkbz1HaOaQzn6oDm3QYsuZlF4TCbBMFFVhR5U/edit?usp=drivesdk"
         },
         {
             "ID проекта": 29,
             "Ф.И.О заказчика": "asdasd gfdg",
             "Номер договора": "1-1-1-1",
             "Тип сделки": "Домокомплект",
-            "Статус": "Строительство",
+            "Статус": "проект готов",
             "Дата создания": "15.02.2025",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1hWSwprlHhBg_dccWL_9xOYjk2t6h5VNHCiHhxg7tKlw/edit",
-            "Резервная копия": "https://docs.google.com/spreadsheets/d/1IkiEsH7mbY8X9ssYc4AJ3HSkvgHdFQZ2Qi7NZyiNqe0/edit?usp=drivesdk"
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1Dhc_NbrzdEda0zsg5yCfNLxviGzw_X9a1hJe2I7Chfw/edit",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1qdkfq8ha3vfBmUX31MEi7c8WH8NSTOxiaMijQgzvYSk/edit?usp=drivesdk"
         },
         {
             "ID проекта": 30,
@@ -808,11 +808,11 @@
             "Ф.И.О заказчика": "фыв",
             "Номер договора": 1,
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "13.02.2025",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1MNO-p6PMiT-Nm1tgbmB9ktavFDK4839390lc-LRpRok/edit",
-            "Резервная копия": "https://docs.google.com/spreadsheets/d/1YnIghxbIOrZDnmzZ_uxKi2FhHbfhnUj9pBaDT0i105w/edit?usp=drivesdk"
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1zDFNaGNmQ5ya4WhYYLWak01cBd10BCgI18KjM3ISbps/edit",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1RbbpSbKie_1xoNoFOix6w00KhXcT136jVrBVnrg6KB4/edit?usp=drivesdk"
         },
         {
             "ID проекта": 13,
@@ -852,11 +852,11 @@
             "Ф.И.О заказчика": "пузиков н.в.   ",
             "Номер договора": "66-25/СВ",
             "Тип сделки": "Строительство",
-            "Статус": "Строительство",
+            "Статус": "проект готов",
             "Дата создания": "12.02.2025",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1XxsWz3aQRLtwmORM8gddIiKiMh8SPdy9KJmFB_wiuK8/edit",
-            "Резервная копия": "https://docs.google.com/spreadsheets/d/1oiRlp30fMk3wGuA9RGxTOgfax-wgl9R6ISWjFs3fj2I/edit?usp=drivesdk"
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/11K2qwkFDXpfKdv7cWc393deXYSIzKIurZciwNd4AawY/edit",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1BAgYK5fcjLAquwJ0F8owHkSlLTqQDhVQYI1dTaucCn4/edit?usp=drivesdk"
         },
         {
             "ID проекта": 7,
@@ -885,11 +885,11 @@
             "Ф.И.О заказчика": "иванов",
             "Номер договора": "12-25/КК",
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "12.02.2025",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1I-B190X1SniKjRCC2bREHskA6ekMdKG8EH835LJTUec/edit",
-            "Резервная копия": "https://docs.google.com/spreadsheets/d/1mQ0PzFWa29hkTnIX0Pxoxw2yHhNmv3jiTrJiC6AoiaM/edit?usp=drivesdk"
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1Hqnv2b00JU7CRYUykTxHFRZx1VN0R4tVnr4RYCv9Dg4/edit",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1IUSuVhInHZMBrZFHRsjp0StUXpfoMMFc-IRg0i0cY0w/edit?usp=drivesdk"
         },
         {
             "ID проекта": 12,
@@ -918,22 +918,22 @@
             "Ф.И.О заказчика": "Викторов Р.Т.",
             "Номер договора": "44-25/КК",
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "09.02.2025",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1ZX6dz8B6L6qxIB4jehSLCxuzvT0U1kpr5fexdWtqxC8/edit",
-            "Резервная копия": "https://docs.google.com/spreadsheets/d/1RtQc8LpodKu7YqN74oTb5f42_887RpcJVXgNZq4cA2c/edit?usp=drivesdk"
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1YdxATDx9yd_SFSuYdHe1UbvJ9W5lOyBdFsDeerHXMAA/edit",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1m9AvkhiXPXPMuCYqQP3153lYP_JpTFSV9xcz2em_Dic/edit?usp=drivesdk"
         },
         {
             "ID проекта": 5,
             "Ф.И.О заказчика": "Перминов К.К. фыв",
             "Номер договора": "55-25/СВ",
             "Тип сделки": "Строительство",
-            "Статус": "change_status",
+            "Статус": "проект готов",
             "Дата создания": "09.02.2025",
             "Примечание": "фыв",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1p-8YqjKw3ABfRYJW9bN3xqK7Cz23FFNDkcCHrTwIQTc/edit",
-            "Резервная копия": "https://docs.google.com/spreadsheets/d/1mbRGNKpbA1woGM_bNADiBWNRd5eXwbxihWpWGI_s7nI/edit?usp=drivesdk"
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1S0re9Y-AVSXCdxJPJNReq2aeGstZAalyWiqxJ-H4jsM/edit",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/17QZCfgS_IMp2lTemUDyA9iBZ33JqMXgKDF7h7deCKqw/edit?usp=drivesdk"
         }
     ],
     "employees": [
@@ -1223,7 +1223,7 @@
             "Домокомплект",
             "Создать проект",
             "",
-            ""
+            " "
         ],
         [
             "Приостановлен",
@@ -1424,7 +1424,7 @@
             "Пластина GNA 50x50",
             "GNA",
             "шт",
-            "2",
+            "-44",
             "",
             "",
             "",
@@ -1435,7 +1435,7 @@
             "Пластина GNA 50x100",
             "GNA",
             "шт",
-            "3",
+            "0",
             "",
             "",
             "",
@@ -1446,7 +1446,7 @@
             "Пластина GNA 50x150",
             "GNA",
             "шт",
-            "1",
+            "0",
             "",
             "",
             "",
@@ -1457,7 +1457,7 @@
             "Пластина T150 100x100",
             "T150",
             "шт",
-            "1",
+            "-3",
             "",
             "",
             "",
@@ -1468,7 +1468,7 @@
             "Пластина T150 100x150",
             "T150",
             "шт",
-            "1",
+            "-12",
             "",
             "",
             "",
@@ -1479,7 +1479,7 @@
             "Пластина T150 100x200",
             "T150",
             "шт",
-            "5",
+            "-3",
             "",
             "",
             "",
@@ -1490,7 +1490,7 @@
             "Пластина M14 200x200",
             "M14",
             "шт",
-            "1",
+            "97",
             "",
             "",
             "",
@@ -1501,11 +1501,44 @@
             "Пластина M14 200x250",
             "M14",
             "шт",
-            "4",
+            "-17",
             "",
             "",
             "",
             "4"
+        ],
+        [
+            "",
+            "",
+            "",
+            "",
+            "0",
+            "",
+            "",
+            "",
+            ""
+        ],
+        [
+            "",
+            "",
+            "",
+            "",
+            "0",
+            "",
+            "",
+            "",
+            ""
+        ],
+        [
+            "",
+            "",
+            "",
+            "",
+            "0",
+            "",
+            "",
+            "",
+            ""
         ]
     ],
     "plate_types": [
@@ -1514,9 +1547,9 @@
         "M14"
     ],
     "urls": {
-        "Списание материалов (веб-форма)": "https://script.google.com/macros/s/AKfycbxDm-TDtUo86zewjymMqo5vimbA_lNfa2y_if4WzufDUSwvpfx4wAemV4WXYMoSb2c3hA/exec",
-        "Внести объемы материалов": "https://script.google.com/macros/s/AKfycbwT6dCFdpzDvcjZl3NzftknKuh5eUOl0icjNNvZixYe55zswOHmd2ywEO3Tzj9K96CX/exec",
-        "Закупка материалов": "https://script.google.com/macros/s/AKfycbwBA3qUHclAo31_RgPzbDwfwZsuT5PZLI6m_A73i6gAdK5nEzUz-5wfEySq-_J-8wX_6g/exec"
+        "Списание материалов (веб-форма)": "https://script.google.com/macros/s/AKfycbwk-z3gPX-MHImx5D4nG537XAj4ejZOO7eFh_gKTrpr92o_vRbNT1uHKr9cIXyZs3dKzQ/exec",
+        "Внести объемы материалов": "https://script.google.com/macros/s/AKfycbwTWkJZFc0PHZwHlTfMt0E03HxxcQemX7VDAvhCzbxt5_bY43R9cvCMGOSf-IxPZ36D/exec",
+        "Закупка материалов": "https://script.google.com/macros/s/AKfycbx0xfZ3PB1tMQSDb3o_M_HBTCoayIDIhsm6zg8fwY7hwzcXXWqJ2ETOCGsqh5NEVbDMjw/exec"
     },
     "instruments": [
         {
@@ -8638,5 +8671,5 @@
             "кол-во": 1
         }
     ],
-    "last_updated": "2025-03-27T13:05:31.891606"
+    "last_updated": "2025-03-27T18:57:25.156889"
 }
