@@ -8,8 +8,8 @@
             "Статус": "проект готов",
             "Дата создания": "28.02.2025",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1VAwno6IbAIQU1ZrXwTfiDGyyrwD2ax2YmnNTZzHpiGA/edit",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1VAwno6IbAIQU1ZrXwTfiDGyyrwD2ax2YmnNTZzHpiGA/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1nCh11d9DhmzAkg69-DwmWw4N-hlLgKP1JNOaBcWtpjo/edit?usp=drivesdk"
         },
         {
             "ID проекта": 57,
@@ -27,88 +27,132 @@
             "Ф.И.О заказчика": "Зыков Д.ЮЮ",
             "Номер договора": "2-1/ДЮ",
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "27.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1Iu_rA3dnzAqlLXi-sbrixdii3DkaRNwgB9QDwBj9gUA/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1pSxBmEJGq-KGi2Ti6xNn--62HFhIPuAbxBqG_tF4fY8/edit?usp=drivesdk"
         },
         {
             "ID проекта": 55,
             "Ф.И.О заказчика": "Зыков Д.Ю",
             "Номер договора": "1-1-1/СВ",
             "Тип сделки": "Строительство",
-            "Статус": "Строительство",
+            "Статус": "проект готов",
             "Дата создания": "27.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1Hx0fF5ltV3u_wKJbRj42dKvAweAEqsxh3rwwItsrpQ0/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/13ZaCGj1h17gvrgdAQirGocDka_jeGYf30oCBxs9nbgI/edit?usp=drivesdk"
         },
         {
             "ID проекта": "",
             "Ф.И.О заказчика": "Холстинин К.С",
             "Номер договора": "33-03/СВ",
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "27.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1SXMUVZzKg5mup4452vncs2ZUhHBmFLdaoxwEzJ7XRH8/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1PD-KsRbrj7rNdPTBwn4hs5SFSy-4qSfsn4HU5Q6B4OM/edit?usp=drivesdk"
         },
         {
             "ID проекта": 53,
             "Ф.И.О заказчика": "Червяков Ф.О.",
             "Номер договора": "01*-01*/КК",
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "26.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1EhaTgaXRe3mxrKK4tHkXgOb0RUOwO-yYCIoyUe3GepQ/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1cpfnF55CbMPIkEZmptFpfovDiuvAKgbaK-jk6Vd1rAQ/edit?usp=drivesdk"
+        },
+        {
+            "ID проекта": "",
+            "Ф.И.О заказчика": "Криворуков С.1",
+            "Номер договора": "57-25С",
+            "Тип сделки": "Ангар",
+            "Статус": "В работе",
+            "Дата создания": "2025-04-17 10:14:52",
+            "Примечание": "",
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1keQS_8C343feRZ03H3E21KulFwVbeLqN8Qo1XZp2AsE/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1posWPjvR5gYQ5O59Lsf2IxIlfF4AjTomGkn3QJp9kS8/edit?usp=drivesdk"
+        },
+        {
+            "ID проекта": "",
+            "Ф.И.О заказчика": "Криворуков С.2",
+            "Номер договора": "57-25С",
+            "Тип сделки": "Строительство",
+            "Статус": "В работе",
+            "Дата создания": "2025-04-17 10:14:52",
+            "Примечание": "",
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1Q5Tms2cEUVnbOGAFdjP8eqOffAaiREL4fseAvPKWP0Q/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1nJNYQKyTURLjJp935Ci14TQn6j0ArcNEJaEJEp8bp84/edit?usp=drivesdk"
+        },
+        {
+            "ID проекта": 81,
+            "Ф.И.О заказчика": "Криворуков",
+            "Номер договора": "52-25С",
+            "Тип сделки": "Ангар",
+            "Статус": "проект готов",
+            "Дата создания": "2025-04-17 10:14:52",
+            "Примечание": "",
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1Wvl6RplWbw-SGkmfnexNcspTEsYRpEoOgRVULYzE_Sg/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1fUjcLVQahVLEIR_Iudbfxd1fku_OZ9WPr7PXm_FyO9I/edit?usp=drivesdk"
+        },
+        {
+            "ID проекта": 80,
+            "Ф.И.О заказчика": "Петров К.Н",
+            "Номер договора": "С12-25",
+            "Тип сделки": "Строительство",
+            "Статус": "проект готов",
+            "Дата создания": "2025-03-28 13:54:27",
+            "Примечание": "",
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1qwfk-XMkH4r-8rUlNsfHbSxM_1PdtthuCFYTzvSrVNU/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1LQVMV51aiclvu8qr6E72V4ffMmUUoJpQlyLeMRjUH7w/edit?usp=drivesdk"
         },
         {
             "ID проекта": 79,
             "Ф.И.О заказчика": 123,
             "Номер договора": 12333,
             "Тип сделки": "Фермы",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "2025-03-26 18:28:28",
             "Примечание": "",
-            "Ссылка на отчёт": "",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1NUIDcLmMoC74A_Sqf5U6kMfHlux7ygZYnC5B6bCpl0E/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1__zCflsHJPwuneFTj1QM9-YLlLfl-cs89avEQQt_90Q/edit?usp=drivesdk"
         },
         {
             "ID проекта": 78,
             "Ф.И.О заказчика": "фыввы",
             "Номер договора": 1,
             "Тип сделки": "Продажа ПМ",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "2025-03-26 16:45:35",
             "Примечание": "",
-            "Ссылка на отчёт": "",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/18jJoQ8jiZYGaxXjPCxw8gQSilHA4rCvaLNrR8coYimw/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1eT_0OPxtrjn9Zwv0LE1HnxonKmoh3t73sQku8Ap6J_s/edit?usp=drivesdk"
         },
         {
             "ID проекта": 77,
             "Ф.И.О заказчика": "сурен джан",
             "Номер договора": "01-01-25/КК",
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "2025-03-26 16:39:33",
             "Примечание": "",
-            "Ссылка на отчёт": "",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1fO1tIVQcpSobV6izVefPd7Fs2E8UzvYM6iTupLo2hxs/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1OVB8ZS06kuS31_TMERVBYEt1mCSdv6PCs4ihYdrQp68/edit?usp=drivesdk"
         },
         {
             "ID проекта": 76,
             "Ф.И.О заказчика": "фывфы вв в",
             "Номер договора": 111,
             "Тип сделки": "Накладные",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "2025-03-26 11:38:04",
             "Примечание": "",
-            "Ссылка на отчёт": "",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1zSiG_1oZ60kDQirgfj5KkRqggqLJ9F2fc55qBHFPvkg/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1AZcBtS6LNXeJagF4UdPJEhFIJCu1VNiYX40QHe3EhQE/edit?usp=drivesdk"
         },
         {
             "ID проекта": 75,
@@ -148,66 +192,66 @@
             "Ф.И.О заказчика": "ывфыв",
             "Номер договора": 1231,
             "Тип сделки": "Накладные",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "2025-03-25 13:29:58",
             "Примечание": "",
-            "Ссылка на отчёт": "",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1_sl30OTXfeci10KSWkbYUEhCb8VJ0n8WltilnmPVASA/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1GqCrvyp4JkhazSgfzW-QqLpZrfCtwz5DAbU5uEVOcG0/edit?usp=drivesdk"
         },
         {
             "ID проекта": 71,
             "Ф.И.О заказчика": "Конор",
             "Номер договора": "01-01/ВИП",
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "2025-03-24 08:31:49",
             "Примечание": "",
-            "Ссылка на отчёт": "",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1MLk9e-kQbgv8szXYQsBSe1yhGpFqHjt8smWVLsskeF0/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1wcKDWZNM5ca1OUWIxa_ogoADG0r_RpHLqDrZSyIpuBg/edit?usp=drivesdk"
         },
         {
             "ID проекта": 70,
             "Ф.И.О заказчика": "першин к.м.",
             "Номер договора": "_1-_1/КК_",
             "Тип сделки": "Продажа ПМ",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "2025-03-22 18:52:28",
             "Примечание": "",
-            "Ссылка на отчёт": "",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1NzhyB4wjr20dLf7xt3YfVSo4vlZocklkEOSFk7_uITk/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1rvrDwGX7xHV_I-kihyQnDXGsRkVOhSKr258jkZt0ExY/edit?usp=drivesdk"
         },
         {
             "ID проекта": 69,
             "Ф.И.О заказчика": "фывфыв",
             "Номер договора": 122,
             "Тип сделки": "Ангар",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "2025-03-21 17:56:03",
             "Примечание": "",
-            "Ссылка на отчёт": "",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1Y0AaWXib1WHMP17UFd3Gqae2TyHiQimdwOUlaaPSKRY/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1Z1j5w3HlTQ16r9G6dFou5JaWOClZV_CNljGcKkZ--oQ/edit?usp=drivesdk"
         },
         {
             "ID проекта": 68,
             "Ф.И.О заказчика": "фывфыв",
             "Номер договора": 1,
             "Тип сделки": "Фахверк комплект",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "2025-03-21 16:39:19",
             "Примечание": "",
-            "Ссылка на отчёт": "",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/16Vwd6EKzizWW7eqkOie_zXMtCjRc289yJxAHAr1hW5E/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/11ESLaWMmSs8voydKbVXK3bjAiFXejMWBpHGsmWpCAJE/edit?usp=drivesdk"
         },
         {
             "ID проекта": 67,
             "Ф.И.О заказчика": "Попкин П.П",
             "Номер договора": "!1-!1/!!",
             "Тип сделки": "Продажа ПМ",
-            "Статус": "В работе",
+            "Статус": "продукция готова",
             "Дата создания": "2025-03-20 14:46:47",
             "Примечание": "",
-            "Ссылка на отчёт": "",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1gKiTreqnDHEfR670LhYHtKezY703fC9QpvRKcM6WkP0/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1zRCNh6QxloGLOO39cr6zgSYjveAcbLOUWB3aHXC1k8E/edit?usp=drivesdk"
         },
         {
             "ID проекта": 66,
@@ -225,55 +269,55 @@
             "Ф.И.О заказчика": "стручков К.К",
             "Номер договора": "14-41/КК",
             "Тип сделки": "Накладные",
-            "Статус": "В работе",
+            "Статус": "продукция готова",
             "Дата создания": "2025-03-19 14:08:32",
             "Примечание": "",
-            "Ссылка на отчёт": "",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1zPBzKqGYhey31AC3_Q3q4oxyUqTVDLvh4hKhUkG-nrI/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1afPF88Yh01uZaYzqVDbaB93G4G7mZtd8W7u5lwHDNlM/edit?usp=drivesdk"
         },
         {
             "ID проекта": 65,
             "Ф.И.О заказчика": "петров к.с.",
             "Номер договора": "13-31/КК",
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "2025-03-19 11:40:40",
             "Примечание": "",
-            "Ссылка на отчёт": "",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1Vz7anDx1Th7Gs7wGxNEnWbfMSn-hmwP8IvIZYhRW5FE/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/10KmwCRSgyjS6ApGJdd5oAQQDw4i-iU8W7fpfpX3W7sU/edit?usp=drivesdk"
         },
         {
             "ID проекта": 64,
             "Ф.И.О заказчика": "петров к.т",
             "Номер договора": "13-13/КТ",
             "Тип сделки": "Ангар",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "2025-03-17 10:32:38",
             "Примечание": "",
-            "Ссылка на отчёт": "",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1yf0Lyq-tnMTKIZNw-KiNZf4t_3-yrncij6yPAWozJQ0/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1ZY1S5EN1c9A8ujBtPSfkxImn2Y2U0lT7Fycuegcalyo/edit?usp=drivesdk"
         },
         {
             "ID проекта": 63,
             "Ф.И.О заказчика": "пупкин лох",
             "Номер договора": "лох-01/СВ",
             "Тип сделки": "Домокомплект",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "2025-03-14 16:43:22",
             "Примечание": "",
-            "Ссылка на отчёт": "",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1CFQNqftfwXqJSxVKL7Z6MPqDN7mXHBbk4ua23ElCcuk/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1uvP4-pIv1j88c9M3tpbldNk_zQWQqS2o598HvTCc0Eo/edit?usp=drivesdk"
         },
         {
             "ID проекта": "",
             "Ф.И.О заказчика": "Перминов К",
             "Номер договора": "55-26/СВ",
             "Тип сделки": "Ангар",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "2025-03-07 10:20:53",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1s3HyEtJya_P9n1YjQmbMQGhPYHP1HWrJQvwIm6QEBaU/edit",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1s3HyEtJya_P9n1YjQmbMQGhPYHP1HWrJQvwIm6QEBaU/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1-M6Jgagu8QS1yJP14jnKk5dj_rx8CJtaAzend49C8Cc/edit?usp=drivesdk"
         },
         {
             "ID проекта": 0,
@@ -291,55 +335,55 @@
             "Ф.И.О заказчика": "Перминов К",
             "Номер договора": "55-26/СВ",
             "Тип сделки": "Домокомплект",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "2025-03-06 10:20:53",
             "Примечание": "",
-            "Ссылка на отчёт": "",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1OKcfojmahiaA3i1YiEyzG8gjcXycVkTkEnEBhwd57W0/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1nT8wVzLTSPjj-2RnIsf-VXerYlaqy_C5E4_seD0H6Ho/edit?usp=drivesdk"
         },
         {
             "ID проекта": "",
             "Ф.И.О заказчика": "Перминов К",
             "Номер договора": "55-26/СВ",
             "Тип сделки": "Фермы",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "2025-03-05 10:20:53",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1Kt88hcTNLdMpIqmIIz8ihrzlcYodpWsVuO0Jzh3BkS8/edit",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1Kt88hcTNLdMpIqmIIz8ihrzlcYodpWsVuO0Jzh3BkS8/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1OMIZ2vpYKK_RiyyIsSbeRtm59OrjoNjJFkJ3N4Ox4y8/edit?usp=drivesdk"
         },
         {
             "ID проекта": "",
             "Ф.И.О заказчика": "Перминов К",
             "Номер договора": "55-26/СВ",
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "2025-03-04 10:20:53",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1tDh-uxsHHMgG-B68US49zOUhtJIMeHD8Pr5dGAsEm5E/edit",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1tDh-uxsHHMgG-B68US49zOUhtJIMeHD8Pr5dGAsEm5E/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1jTGhYNFkImb1z9QrnBbTbH0jjaW7gem2_rCpa3MhZt8/edit?usp=drivesdk"
         },
         {
             "ID проекта": 62,
             "Ф.И.О заказчика": "Червяков",
             "Номер договора": "40-25/кк",
             "Тип сделки": "Ангар",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "2025-03-04 10:03:53",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/19vZy8Z7yXIBnpDMnP4PyqqJHM4mFPW88iSm2F8uTuos/edit",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/19vZy8Z7yXIBnpDMnP4PyqqJHM4mFPW88iSm2F8uTuos/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1hTIBYwH_FdbgwCPabuBKXaMiVUqcWLfE1ZgqTuq_vgE/edit?usp=drivesdk"
         },
         {
             "ID проекта": 62,
             "Ф.И.О заказчика": "Червяков",
             "Номер договора": "408-25/кк",
             "Тип сделки": "Ангар",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "2025-03-04 10:03:52",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1qQe88Ahh9zejXxrsqV_xeTpXdhr2voWHLv_wJvPPCN8/edit",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1qQe88Ahh9zejXxrsqV_xeTpXdhr2voWHLv_wJvPPCN8/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1oIb9E_VrE9os6xsgd8rq-yym11Zdf1lkMJYhUhR5LL0/edit?usp=drivesdk"
         },
         {
             "ID проекта": 61,
@@ -357,11 +401,11 @@
             "Ф.И.О заказчика": "Кощеев Сергей Петрович",
             "Номер договора": "144/кк-23.09.1978",
             "Тип сделки": "Домокомплект",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "2025-03-03 11:31:45",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1kxGrs3qcW2qKxihWZa9G35ofuHksPic_0D0JFuNE9qY/edit",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1kxGrs3qcW2qKxihWZa9G35ofuHksPic_0D0JFuNE9qY/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1aETqTDfKPR5Ult34eL_fwXtwWMqIH-1Of6wG1gMEPNo/edit?usp=drivesdk"
         },
         {
             "ID проекта": 59,
@@ -379,55 +423,55 @@
             "Ф.И.О заказчика": "Так А.П",
             "Номер договора": "11-1/АА",
             "Тип сделки": "Домокомплект",
-            "Статус": "приостановлен",
+            "Статус": "проект готов",
             "Дата создания": "20.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1v2KCTbuzqC3ka4lrKi1-IOgKccO1Tozn9W2XDnnXwdc/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1k6uo51MFwILCfNfb3N22WpCZYTM2xKcRcWXnM79DViI/edit?usp=drivesdk"
         },
         {
             "ID проекта": "",
             "Ф.И.О заказчика": "Так А.Д",
             "Номер договора": "22-2/АА",
             "Тип сделки": "Фермы",
-            "Статус": "приостановлен",
+            "Статус": "проект готов",
             "Дата создания": "20.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1yiV5JFQMWLpAw1zFdqFSiMuKEY8HjMFIKIVgi8zNWwU/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/13GS_o_BU6aROYBK1oVFcmbM3lgtaQPBbKumnpIeIOMI/edit?usp=drivesdk"
         },
         {
             "ID проекта": "",
             "Ф.И.О заказчика": "Так А.С",
             "Номер договора": "33-3/АА",
             "Тип сделки": "Ангар",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "20.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/13aOm1msMbijP79UZcZqTxKH4VFpVGgpxNqHzxm1SDTY/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1_Tk56OZWYu9cWk1LDXoDnjBmXqbbYE13Xjbg7GRT8nk/edit?usp=drivesdk"
         },
         {
             "ID проекта": "",
             "Ф.И.О заказчика": "Так А.Р",
             "Номер договора": "44-4/АА",
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "20.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1Y9hCIB-uIcDYwfgS55GG9zTsQ92tGGvXAnD8WIz4REI/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1XvhZ3w7eDgyKEsK41iada6DHSrimXhsYm1foxingvVM/edit?usp=drivesdk"
         },
         {
             "ID проекта": "",
             "Ф.И.О заказчика": "Так А.Й",
             "Номер договора": "555-26/АА",
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "20.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/17AJZAXWw0mcs9nG46QetJoDgR-vpRXuOTIQXOQvR1Mg/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/110DnpUJV5cU5Wnc4aJFHj5ryHPd92u71aYGyuHECq7w/edit?usp=drivesdk"
         },
         {
             "ID проекта": 50,
@@ -438,62 +482,62 @@
             "Дата создания": "20.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1_DlIviVDjeRZPARdvEJ2_t-a5yL9VFnl-Ms-yf1Z1EE/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/16yH62NVUIML1OB5X4MdWJ_HzQ0H-BtqxwptwyW7zcPA/edit?usp=drivesdk"
         },
         {
             "ID проекта": 51,
             "Ф.И.О заказчика": "Тестов Т.Т.",
             "Номер договора": "9-9/9",
             "Тип сделки": "Фермы",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "20.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1cQG29MR9ijKDlsLue4YgwuAGuZBGd_-0LytRudbmebY/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1Hv2vNEMx2RhgEXwFX51dxrc5HMVpj_mVd8vh46u9-EM/edit?usp=drivesdk"
         },
         {
             "ID проекта": 52,
             "Ф.И.О заказчика": "Тестов2 Т.Т",
             "Номер договора": "8-8/8",
             "Тип сделки": "Ангар",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "20.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1UssZQ59EbV5Ll8Z_PR4tn4Fzz746WASZqGUR3IR4-LU/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1TTOOFKG8i0OZSIkaSD1r4ERzqQolT5SmakoVVJ5gcZE/edit?usp=drivesdk"
         },
         {
             "ID проекта": 30,
             "Ф.И.О заказчика": "червяков а.р.",
             "Номер договора": "19-19/КК",
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "19.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/11lEGQkdTczG41e_AK2UoNMZmhZOid-2vsbfhxxgdIWQ/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1rrsKnamuqwhUvKkAcJ6toEH2OFabeLBSK1flZ5NR1qU/edit?usp=drivesdk"
         },
         {
             "ID проекта": 31,
             "Ф.И.О заказчика": "керов т.к",
             "Номер договора": "199-19/КК",
             "Тип сделки": "Домокомплект",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "19.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1m06dkTxKFvsh9Pvc0jkk1gaswWTCr0BbUBd7aiEbR_g/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1u-RY-aXHPysJXc8Fi1TzQS50kBLP4nILnb2SHRK30Oo/edit?usp=drivesdk"
         },
         {
             "ID проекта": "",
             "Ф.И.О заказчика": "Так А.П",
             "Номер договора": "1-1/АА",
             "Тип сделки": "Домокомплект",
-            "Статус": "Строительство",
+            "Статус": "проект готов",
             "Дата создания": "19.02.2025",
             "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1On0D99uC--HovADTolj-lkxvVonB_X0IQX2qPBMBTC0/edit#gid=1593507724",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1On0D99uC--HovADTolj-lkxvVonB_X0IQX2qPBMBTC0/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/19FLz5ICED5fv0JCR_qrupKuR51a3-lLP8ElVkrtOS8o/edit?usp=drivesdk"
         },
         {
             "ID проекта": "",
@@ -511,55 +555,55 @@
             "Ф.И.О заказчика": "Так А.С",
             "Номер договора": "3-3/АА",
             "Тип сделки": "Ангар",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "19.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1veaK858HcUxIR3d7Z-dHyFSykAwDSJ_lkOwPDWbNx5o/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1dgeia1x9GvinY0pxiB1PuNd34rtfzXTbyJvKQ_SZRSc/edit?usp=drivesdk"
         },
         {
             "ID проекта": "",
             "Ф.И.О заказчика": "Так А.Р",
             "Номер договора": "4-24АА",
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "19.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/14gQlAIW8yICF2Qi0LfGtxe--1Tmj5P0HVQr_bgw3hNg/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/11KzJ8ulbVLOLWonYkt1iTdiMFhY3dvcTAfAV7XOI-Qc/edit?usp=drivesdk"
         },
         {
             "ID проекта": "",
             "Ф.И.О заказчика": "Так А.Й",
             "Номер договора": "5-26/АА",
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "19.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1UVmYCRY7jlyGFbm4zRiWOc5Oo4pXR6764kJ-i5WkFns/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1WHR8ZRPBdXc7UyZUUT-HymLCHVGqRXustfBeOzCQLCs/edit?usp=drivesdk"
         },
         {
             "ID проекта": 37,
             "Ф.И.О заказчика": "Дак Г.Г.",
             "Номер договора": "777-77/ГГ",
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "19.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1Rx2Bdnxi7fv3hW_3sFtzttTI786Qdm0HV-U8JU-OUT0/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1J09oSQ0jzM02Rv5pjDEItSB_a0L0jYarv33SyoRr2eU/edit?usp=drivesdk"
         },
         {
             "ID проекта": 38,
             "Ф.И.О заказчика": "Даг К.К",
             "Номер договора": "7777-777/ЯЯ",
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "19.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1n_2bqiyCMMr88a8sluipczTv2I0tbjjbElufrIEcLlc/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1warEw-Y4POyyZp-a9BxiIDzvIMNn1VPUwaaLjxLquFY/edit?usp=drivesdk"
         },
         {
             "ID проекта": "",
@@ -588,121 +632,143 @@
             "Ф.И.О заказчика": "Так3 А.С",
             "Номер договора": "3-33/АА",
             "Тип сделки": "Ангар",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "19.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1RpW2twjeOkutF2ITP6z5cpoRufpCcN_FUBcS44hWKns/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1zkX0CgcUeI6al3_ETR26fdpgjQ2FJl3cWM6ZE9LXlDs/edit?usp=drivesdk"
         },
         {
             "ID проекта": "",
             "Ф.И.О заказчика": "Так4 А.Р",
             "Номер договора": "4-44/АА",
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "19.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1Wkk04TerWololaXIUArPcUlicp0JrN6f0Pcv9ITu8uU/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1vQMotQiZ7TI3gH4S_OzbDm_vXsTvWKFtLp3YBjio_DA/edit?usp=drivesdk"
         },
         {
             "ID проекта": "",
             "Ф.И.О заказчика": "Так5 А.Й",
             "Номер договора": "5-267/АА",
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "19.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/18MV0i6UwZy_A7rM1bKQI6zuDkwDMrBoSLf6q19J5-jY/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1juW-DqGQow3oPnXBzGe4lBC37e1dx9xX3BEK2f8uY9w/edit?usp=drivesdk"
         },
         {
             "ID проекта": 44,
             "Ф.И.О заказчика": "Яр Р.М",
             "Номер договора": "220-2025/СВ",
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "19.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1H1RbyB9Au_UOknbzS8c7Le-9goZOZwZh3aNBvsaq1Pc/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1dALYFbIxMYfdu08cz3gGRS1t2_PT7z6YHetQayQJ2Rs/edit?usp=drivesdk"
+        },
+        {
+            "ID проекта": "",
+            "Ф.И.О заказчика": "Воронов В.1",
+            "Номер договора": "30-25/СВ",
+            "Тип сделки": "Строительство",
+            "Статус": "проект готов",
+            "Дата создания": "17.04.2025",
+            "Примечание": "",
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1bCMZNCjVW5N-xJWpBu6jMlqE6ugoMUfOq7SHymckqGY/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1keraKKQ1aclTv7g463yyhpLA9yxwgE9elsgRMsoufrE/edit?usp=drivesdk"
+        },
+        {
+            "ID проекта": "",
+            "Ф.И.О заказчика": "Воронов В.2",
+            "Номер договора": "29-25/СВ",
+            "Тип сделки": "Домокомплект",
+            "Статус": "проект готов",
+            "Дата создания": "17.04.2025",
+            "Примечание": "",
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1IndWbE5ZKMN9VAKac0Ao-JX3H0DEL-gc89t_iKXloig/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/14BSQIIuWgtP-qX4RKDcDOcsWqcupKhTmAqRg7tGyytU/edit?usp=drivesdk"
         },
         {
             "ID проекта": 23,
             "Ф.И.О заказчика": "цуй дл ав",
             "Номер договора": "0110-88/КК",
             "Тип сделки": "Домокомплект",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "17.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1qjJkWtZPrA8MthutusdAnGHA6eSuAM3OZ6S0rfFFSSk/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1U6wM6_Wsg0RcRGS-7fNsbYMbdksJSiCYdubmJm8eB74/edit?usp=drivesdk"
         },
         {
             "ID проекта": 23,
             "Ф.И.О заказчика": "фвфыв аап апап",
             "Номер договора": "0110-99/КК",
             "Тип сделки": "Домокомплект",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "16.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1rW-mEMnUWi7naJKtok9lpQsKsvAURWDmWYkpFThSZz4/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/19ylxfExm7M_yXbBbQeGd6aS8WOoyq_Kabz4MbKUqcOo/edit?usp=drivesdk"
         },
         {
             "ID проекта": 29,
             "Ф.И.О заказчика": "Пупышев 47-25/СВ",
             "Номер договора": "47-25/СВ",
             "Тип сделки": "Строительство",
-            "Статус": "Продукция готова",
+            "Статус": "проект готов",
             "Дата создания": "16.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1auub8NyzOXaAjzG1xLCggASunWXnLB9OpFydAgNaxWg/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1J86epv0kjDBDFkbJ2oarLmOxXM70Emrsv4RQ_O3CsJs/edit?usp=drivesdk"
         },
         {
             "ID проекта": 21,
             "Ф.И.О заказчика": "ываыва",
             "Номер договора": 1231212,
             "Тип сделки": "Домокомплект",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "15.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1trBtg59kjh9oWmoBSu5aBNTeH1nBsnV8TLf7_rbdpGU/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1lPmy3lxqJOsbqMYG7-8qR_FFTOajeW16aP-yz6Ws2dI/edit?usp=drivesdk"
         },
         {
             "ID проекта": 16,
             "Ф.И.О заказчика": "злобина г.г.",
             "Номер договора": "010-25/СВ",
             "Тип сделки": "Фермы",
-            "Статус": "Строительство",
+            "Статус": "проект готов",
             "Дата создания": "15.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1yAxc97DH7BFH8znMyf6uDhHPdfraCB0xmRbdsiGoO58/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/12mGuYvlZAKDxcXFdt5R3a0ohKwkHF2kBwpYHsxFaCaU/edit?usp=drivesdk"
         },
         {
             "ID проекта": 17,
             "Ф.И.О заказчика": "вар",
             "Номер договора": "1-1-КК",
             "Тип сделки": "Ангар",
-            "Статус": "Строительство",
+            "Статус": "проект готов",
             "Дата создания": "15.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1_rTkhJPx9zRmY3kOeKAY8DuRTswkpOnJ8SATAez97gE/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1ey9yut2EshbLVssBAPTb3OV4x3k6VdHMaCRViKfqjG4/edit?usp=drivesdk"
         },
         {
             "ID проекта": 18,
             "Ф.И.О заказчика": "котенджи",
             "Номер договора": "0001-01/КК",
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "15.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1b-5puU6XH8v3dK4lyzmU6tLYMPdm1WShafxWm6GNlqw/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1aafm8RiM6PxbPLnfVZPEG3YCpgWfBiAOXiL6os-7V3c/edit?usp=drivesdk"
         },
         {
             "ID проекта": 19,
@@ -720,22 +786,22 @@
             "Ф.И.О заказчика": "писюнов",
             "Номер договора": "100-100КК",
             "Тип сделки": "Фермы",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "15.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1PqNTrQ2-f1dqNqopFsUnCBPlRYke9q6tIp0pmynfGtM/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/15bty2QsVQwo94K51-qP-qRbJ5wxhcXI644edcyndEh8/edit?usp=drivesdk"
         },
         {
             "ID проекта": 21,
             "Ф.И.О заказчика": "ываыва",
             "Номер договора": 1231212,
             "Тип сделки": "Домокомплект",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "15.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1Fr9-7mesyuTPOqXLzDGi_5aAPTAdOWgnXFgIRDMaSM8/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1jy0pPWpftdDLHy0SYjO9E6j9lvywAh1GOd1mSaEsWPQ/edit?usp=drivesdk"
         },
         {
             "ID проекта": 23,
@@ -775,33 +841,33 @@
             "Ф.И.О заказчика": "перты ыы ыы",
             "Номер договора": "34-34-34",
             "Тип сделки": "Фермы",
-            "Статус": "продукция готова",
+            "Статус": "проект готов",
             "Дата создания": "15.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1ikQzjYzqny7rCwEobng-iHRf7JWDa17PSkXtvNysSho/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1mqMuYTahWyljm6YrwSCpN_p_vjHf1z7Oz7CAOJkKtcE/edit?usp=drivesdk"
         },
         {
             "ID проекта": 31,
             "Ф.И.О заказчика": "рпм",
             "Номер договора": "4321-1234",
             "Тип сделки": "Фермы",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "15.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1Necsek-9yMgBM0IfYHRfKoPBO8eDArFXvsxVfQV9ahQ/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1maaS-dDWnhuzJEB5vKvw4JG4EOBnBQq_YVqdfPGu1uA/edit?usp=drivesdk"
         },
         {
             "ID проекта": 11,
             "Ф.И.О заказчика": "фыв",
             "Номер договора": 11,
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "14.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1Mzsrw4UhTz-Se6LYkLzsPKTLO3yDrO_vBElae1tNN_s/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1ijbNUAJmeQW28ViWsnWK0cGGAKf3tCvs1wOZ4iUGxjY/edit?usp=drivesdk"
         },
         {
             "ID проекта": 10,
@@ -819,33 +885,77 @@
             "Ф.И.О заказчика": "5кууке",
             "Номер договора": 566666,
             "Тип сделки": "Строительство",
-            "Статус": "Приостановлен",
+            "Статус": "проект готов",
             "Дата создания": "13.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/14lUjq4EF-Obx0DZny_9ebI9qZV3-GwaAKRhVSbbq4uI/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1Rfbv03BxtS3m28kDId0Wfn8LnF6GrRx30OjTWXNXn_o/edit?usp=drivesdk"
         },
         {
             "ID проекта": 14,
             "Ф.И.О заказчика": "5кууке",
             "Номер договора": 566666,
             "Тип сделки": "Строительство",
-            "Статус": "В работе",
+            "Статус": "проект готов",
             "Дата создания": "13.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1Gdg3K-qXy2iHJE7bxLhdNuJcki2CJDqiSmiMwCyGhWc/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/12CFACyMGI006m5wPuY4T1xQpFDQRP7vmZT7N4ttJu-0/edit?usp=drivesdk"
         },
         {
             "ID проекта": 15,
             "Ф.И.О заказчика": "кок т.р",
             "Номер договора": "001-25\\св",
             "Тип сделки": "Домокомплект",
-            "Статус": "Строительство",
+            "Статус": "проект готов",
             "Дата создания": "13.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1pvTWQAHNNX9o5JOEpbOO2o3CYu1PptH2leZEfSyPwtM/edit?usp=drivesdk",
-            "Резервная копия": ""
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1C0g6FCMlR6t3Ew4vZtY5jJLr-eN2Lh4hSMwhrZeA8Ew/edit?usp=drivesdk"
+        },
+        {
+            "ID проекта": 7,
+            "Ф.И.О заказчика": "пузиков н.в.",
+            "Номер договора": "1-1\\К",
+            "Тип сделки": "Строительство",
+            "Статус": "В работе",
+            "Дата создания": "12.02.2025",
+            "Примечание": "",
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/17RBE_XYncoQUpUJbxxxkV2Ri48TUc588EewFkwOvUQ0/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/16KbPrrZFsd1Qem2PYm8o_1F47hO3XSZglqtbaH08j30/edit?usp=drivesdk"
+        },
+        {
+            "ID проекта": 8,
+            "Ф.И.О заказчика": "йцу",
+            "Номер договора": 12,
+            "Тип сделки": "Домокомплект",
+            "Статус": "В работе",
+            "Дата создания": "12.02.2025",
+            "Примечание": "",
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/15x6B1ca5XsNRLmGxa5SzaSOYOmxJoF3eyQx09-MaGqg/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1JTWYjYsKb3KZximGPiDif2x2kfKzqyaOaAziASMzDv8/edit?usp=drivesdk"
+        },
+        {
+            "ID проекта": 9,
+            "Ф.И.О заказчика": "иванов",
+            "Номер договора": "12-25/КК",
+            "Тип сделки": "Строительство",
+            "Статус": "В работе",
+            "Дата создания": "12.02.2025",
+            "Примечание": "",
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1Hqnv2b00JU7CRYUykTxHFRZx1VN0R4tVnr4RYCv9Dg4/edit",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1IUSuVhInHZMBrZFHRsjp0StUXpfoMMFc-IRg0i0cY0w/edit?usp=drivesdk"
+        },
+        {
+            "ID проекта": 12,
+            "Ф.И.О заказчика": "фыв",
+            "Номер договора": 123,
+            "Тип сделки": "Строительство",
+            "Статус": "В работе",
+            "Дата создания": "12.02.2025",
+            "Примечание": "",
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/19N-7HHmB2Va2L4BZGlfhl94kjCw3JCojfQQ26qbWOtg/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1SloIkViqKedKRlw7od1bZ-TEb2WIvRZmT5jz1Eoo7fk/edit?usp=drivesdk"
         },
         {
             "ID проекта": 6,
@@ -859,50 +969,6 @@
             "Резервная копия": "https://docs.google.com/spreadsheets/d/1BAgYK5fcjLAquwJ0F8owHkSlLTqQDhVQYI1dTaucCn4/edit?usp=drivesdk"
         },
         {
-            "ID проекта": 7,
-            "Ф.И.О заказчика": "пузиков н.в.",
-            "Номер договора": "1-1\\К",
-            "Тип сделки": "Строительство",
-            "Статус": "проект готов",
-            "Дата создания": "12.02.2025",
-            "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/17RBE_XYncoQUpUJbxxxkV2Ri48TUc588EewFkwOvUQ0/edit?usp=drivesdk",
-            "Резервная копия": ""
-        },
-        {
-            "ID проекта": 8,
-            "Ф.И.О заказчика": "йцу",
-            "Номер договора": 12,
-            "Тип сделки": "Домокомплект",
-            "Статус": "В работе",
-            "Дата создания": "12.02.2025",
-            "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/15x6B1ca5XsNRLmGxa5SzaSOYOmxJoF3eyQx09-MaGqg/edit?usp=drivesdk",
-            "Резервная копия": ""
-        },
-        {
-            "ID проекта": 9,
-            "Ф.И.О заказчика": "иванов",
-            "Номер договора": "12-25/КК",
-            "Тип сделки": "Строительство",
-            "Статус": "проект готов",
-            "Дата создания": "12.02.2025",
-            "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1Hqnv2b00JU7CRYUykTxHFRZx1VN0R4tVnr4RYCv9Dg4/edit",
-            "Резервная копия": "https://docs.google.com/spreadsheets/d/1IUSuVhInHZMBrZFHRsjp0StUXpfoMMFc-IRg0i0cY0w/edit?usp=drivesdk"
-        },
-        {
-            "ID проекта": 12,
-            "Ф.И.О заказчика": "фыв",
-            "Номер договора": 123,
-            "Тип сделки": "Строительство",
-            "Статус": "Строительство",
-            "Дата создания": "12.02.2025",
-            "Примечание": "",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/19N-7HHmB2Va2L4BZGlfhl94kjCw3JCojfQQ26qbWOtg/edit?usp=drivesdk",
-            "Резервная копия": ""
-        },
-        {
             "ID проекта": 3,
             "Ф.И.О заказчика": "Воронов В.А",
             "Номер договора": "33-25/СВ",
@@ -910,15 +976,15 @@
             "Статус": "В работе",
             "Дата создания": "09.02.2025",
             "Примечание": "Создать отчет",
-            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1IULCD_5qSBc11iwqOPzVkx0VjL_1DWqXvUc4lYONRl8/edit",
-            "Резервная копия": ""
+            "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1IULCD_5qSBc11iwqOPzVkx0VjL_1DWqXvUc4lYONRl8/edit?usp=drivesdk",
+            "Резервная копия": "https://docs.google.com/spreadsheets/d/1ZeN0ZGd7xQ_wtLntNa47RzU8i9ReE32caz-xEc1ROa4/edit?usp=drivesdk"
         },
         {
             "ID проекта": 4,
             "Ф.И.О заказчика": "Викторов Р.Т.",
             "Номер договора": "44-25/КК",
             "Тип сделки": "Строительство",
-            "Статус": "проект готов",
+            "Статус": "В работе",
             "Дата создания": "09.02.2025",
             "Примечание": "",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1YdxATDx9yd_SFSuYdHe1UbvJ9W5lOyBdFsDeerHXMAA/edit",
@@ -929,7 +995,7 @@
             "Ф.И.О заказчика": "Перминов К.К. фыв",
             "Номер договора": "55-25/СВ",
             "Тип сделки": "Строительство",
-            "Статус": "проект готов",
+            "Статус": "В работе",
             "Дата создания": "09.02.2025",
             "Примечание": "фыв",
             "Ссылка на отчёт": "https://docs.google.com/spreadsheets/d/1S0re9Y-AVSXCdxJPJNReq2aeGstZAalyWiqxJ-H4jsM/edit",
@@ -966,7 +1032,7 @@
         },
         {
             "ID": 4,
-            "Ф.И.О": "Ершов С.__.",
+            "Ф.И.О": "Ершов С.В.",
             "Логин": 4,
             "Пароль": 4,
             "Роль": "Плотник производства",
@@ -975,7 +1041,7 @@
         },
         {
             "ID": 5,
-            "Ф.И.О": "Ершов Е.__.",
+            "Ф.И.О": "Ершов Е.В.",
             "Логин": 5,
             "Пароль": 5,
             "Роль": "Фермы производство",
@@ -1026,6 +1092,69 @@
             "Роль": "Руководитель",
             "Отдел": "Руководство",
             "Доступ": "TRUE"
+        },
+        {
+            "ID": 11,
+            "Ф.И.О": "Пантелеев А.А",
+            "Логин": 11,
+            "Пароль": 11,
+            "Роль": "Мастер производства",
+            "Отдел": "Производство",
+            "Доступ": "FALSE"
+        },
+        {
+            "ID": 12,
+            "Ф.И.О": "Кузьминых В.Н.",
+            "Логин": 12,
+            "Пароль": 12,
+            "Роль": "Мастер производства",
+            "Отдел": "Производство",
+            "Доступ": "TRUE"
+        },
+        {
+            "ID": 13,
+            "Ф.И.О": "Беспалов И.А.",
+            "Логин": 13,
+            "Пароль": 13,
+            "Роль": "Плотник производства",
+            "Отдел": "Производство",
+            "Доступ": "TRUE"
+        },
+        {
+            "ID": 14,
+            "Ф.И.О": "Четвертных Сергей Алексеевич",
+            "Логин": 14,
+            "Пароль": 14,
+            "Роль": "Плотник производства",
+            "Отдел": "Производство",
+            "Доступ": "TRUE"
+        },
+        {
+            "ID": 15,
+            "Ф.И.О": "Малыгин Роман Владимирович",
+            "Логин": 15,
+            "Пароль": 15,
+            "Роль": "Плотник производства",
+            "Отдел": "Производство",
+            "Доступ": "FALSE"
+        },
+        {
+            "ID": 16,
+            "Ф.И.О": "Вахрушев Павел Андрееивч",
+            "Логин": 16,
+            "Пароль": 16,
+            "Роль": "Плотник производства",
+            "Отдел": "Производство",
+            "Доступ": "FALSE"
+        },
+        {
+            "ID": 17,
+            "Ф.И.О": "Князев Илья Николаевич",
+            "Логин": 17,
+            "Пароль": 17,
+            "Роль": "Плотник производства",
+            "Отдел": "Производство",
+            "Доступ": "FALSE"
         }
     ],
     "permissions": [
@@ -1060,14 +1189,14 @@
         [
             "РОП",
             "В работе Продукция готова Приостановлен Проект готов Строительство",
-            "Смена статуса проекта, Создать проект, Добавить расход",
+            "Смена статуса проекта, Создать проект, Добавить расход Обновление КЭШ-а Сообщить о проблеме",
             "Фермы Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ Проектная деятельность",
             "TRUE"
         ],
         [
             "Менеджер",
             "В работе Продукция готова Приостановлен Проект готов Строительство",
-            "Добавить расход",
+            "Добавить расход Обновление КЭШ-а",
             "Фермы Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ Проектная деятельность",
             "TRUE"
         ],
@@ -1081,35 +1210,35 @@
         [
             "Главный Бухгалтер",
             "В работе Продукция готова Приостановлен Проект готов Строительство",
-            "Закупка материалов Списание материалов (веб-форма) Списание материалов (веб-форма) Списать материалы  Добавить расход Новый инструмент",
+            "Закупка материалов Списание материалов (веб-форма) Списание материалов (веб-форма) Списать материалы  Добавить расход Новый инструмент Обновление КЭШ-а",
             "Фермы Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ Проектная деятельность",
             "TRUE"
         ],
         [
             "Бухгалтер",
             "В работе Продукция готова Приостановлен Проект готов Строительство",
-            "Списать материалы  Списание материалов (веб-форма) Списание материалов (веб-форма) Добавить расход Закупка материалов Новый инструмент Внести объемы материалов",
+            "Списать материалы  Списание материалов (веб-форма) Списание материалов (веб-форма) Добавить расход Закупка материалов Новый инструмент Внести объемы материалов Обновление КЭШ-а",
             "Фермы Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ Проектная деятельность",
             "TRUE"
         ],
         [
             "Инженер ПТО",
             "В работе Продукция готова Строительство",
-            "Списать материалы  Списание материалов (веб-форма) Списание материалов (веб-форма) Добавить расход Закупка материалов Новый инструмент Внести объемы материалов Доставка Инструмент Создать проект Смена статуса проекта",
+            "Списать материалы  Списание материалов (веб-форма) Списание материалов (веб-форма) Добавить расход Закупка материалов Новый инструмент Внести объемы материалов Доставка Инструмент Создать проект Смена статуса проекта Обновление КЭШ-а",
             "Фермы Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ Проектная деятельность",
             "TRUE"
         ],
         [
             "Руководитель",
             "В работе Продукция готова Приостановлен Проект готов Строительство",
-            "Смена статуса проекта Списать материалы  Добавить расход Инструмент Новый инструмент Закупка материалов Обновление КЭШ-а Создать проект",
+            "Смена статуса проекта Списать материалы  Добавить расход Инструмент Новый инструмент Закупка материалов Обновление КЭШ-а Создать проект Сообщить о проблеме",
             "Фермы Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ Проектная деятельность",
             "TRUE"
         ],
         [
             "Мастер производства",
             "В работе Продукция готова",
-            "Списать материалы  Добавить расход Списание материалов (веб-форма)",
+            "Списать материалы  Добавить расход Списание материалов (веб-форма) Обновление КЭШ-а",
             "Фермы Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ Проектная деятельность",
             "TRUE"
         ],
@@ -1144,7 +1273,7 @@
         [
             "Мастер строительство",
             "В работе Продукция готова Строительство",
-            "Смена статуса проекта Списать материалы  Добавить расход Инструмент Новый инструмент Закупка материалов",
+            "Смена статуса проекта Списать материалы  Добавить расход Инструмент Новый инструмент Закупка материалов Обновление КЭШ-а",
             "Ангар Фахверк комплект Строительство Проектная деятельность",
             "TRUE"
         ],
@@ -1294,6 +1423,13 @@
             "Обновление КЭШ-а",
             "",
             ""
+        ],
+        [
+            "",
+            "",
+            "Сообщить о проблеме",
+            "",
+            ""
         ]
     ],
     "materials": [
@@ -1347,9 +1483,333 @@
         },
         {
             "ID": 9,
-            "Наименование": "дилдо",
-            "Ед. измерения": 1,
-            "Тип сделки": "Все"
+            "Наименование": "Доска 45*190*4000",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 10,
+            "Наименование": "Доска 45*140*4000",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 11,
+            "Наименование": "Доска 45*90*4000  ",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 12,
+            "Наименование": "Доска 50*200*6000 сухая ",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 13,
+            "Наименование": "Доска 50*150*6000 сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 14,
+            "Наименование": "Доска 50*125*6000 сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 15,
+            "Наименование": "Доска 50*100*6000 сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 16,
+            "Наименование": "Доска 50*200*4000 сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 17,
+            "Наименование": "Доска 50*150*4000 сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 18,
+            "Наименование": "Доска 50*100*4000 сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 19,
+            "Наименование": "Доска  40*100*6000 сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 20,
+            "Наименование": "Доска 35*90*6000",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 21,
+            "Наименование": "Террасная доска 35*140*6000",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 22,
+            "Наименование": "Брусок 12*45*3000",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 23,
+            "Наименование": "Брусок 20*40*3000",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 24,
+            "Наименование": "Брусок 25*50*6000",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 25,
+            "Наименование": "Брусок 30*40*2000",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 26,
+            "Наименование": "Брусок 30*40-45*3000 (503)",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 27,
+            "Наименование": "Брусок 30*65*4000",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 28,
+            "Наименование": "Брусок 30*65*2000",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 29,
+            "Наименование": "Брусок 30*65*3000",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 30,
+            "Наименование": "Брусок 45*45*6000 (505)",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 31,
+            "Наименование": "Брусок 45*55*6000",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 32,
+            "Наименование": "UYV 22*145*6000 тонкопитенная поверхность (540)",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 33,
+            "Наименование": "Доска 20*190*6000 сорт А-В (542)",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 34,
+            "Наименование": "Доска 20*140*6000 сорт А-В (541)",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 35,
+            "Наименование": "Доска 20*90*6000 сорт А-В,/20*90*6000 (543)",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 36,
+            "Наименование": "Дюймовка 25*100*6000 сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 37,
+            "Наименование": "Дюймовка 25*150*6000 сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 38,
+            "Наименование": "Дюймовка 25*125*6000 сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 39,
+            "Наименование": "Дюймовка 25*150*6000 3 сорт сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 40,
+            "Наименование": "Тетива 50*300*3000",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 41,
+            "Наименование": "Тетива 50*300*4000",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 42,
+            "Наименование": "Тетива 50*300*5000",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 43,
+            "Наименование": "Тетива 50*300*6000",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 44,
+            "Наименование": "Тетива 60*300*6000",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 45,
+            "Наименование": "UYV 22*195*6000 тонкопитенная поверхность (540)",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 46,
+            "Наименование": "Доска 20*120*6000 (5104)",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 47,
+            "Наименование": "Доска 20*190*3000",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 48,
+            "Наименование": "Дюймовка 25*150*5000 3 сорт сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 49,
+            "Наименование": "Доска 40*150*6000 сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 50,
+            "Наименование": "Доска 100*230*6000 Сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 51,
+            "Наименование": "Доска 50*250*6000 Сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 52,
+            "Наименование": "Доска 90*220*6000 Строганая сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 53,
+            "Наименование": "Доска 90*200*6000 сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 54,
+            "Наименование": "Доска 70*190*6000 Строганная сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 55,
+            "Наименование": "Доска 45*110*6000",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 56,
+            "Наименование": "Доска 50*150*3000 сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 57,
+            "Наименование": "Доска 40*100*5000 сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 58,
+            "Наименование": "Доска 40*100*4000 сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 59,
+            "Наименование": "Доска 50*200*3000 сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 60,
+            "Наименование": "Доска 50*100*3000 сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 61,
+            "Наименование": "Брусок 45*45*3000",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 62,
+            "Наименование": "Доска 40*125*6000 сухая",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
+        },
+        {
+            "ID": 63,
+            "Наименование": "Доска 20*140*2000 ",
+            "Ед. измерения": "шт",
+            "Тип сделки": "Домокомплект Ангар Фахверк комплект Строительство Продажа ПМ"
         }
     ],
     "plates": [
@@ -1424,7 +1884,7 @@
             "Пластина GNA 50x50",
             "GNA",
             "шт",
-            "-44",
+            "-56",
             "",
             "",
             "",
@@ -1490,7 +1950,7 @@
             "Пластина M14 200x200",
             "M14",
             "шт",
-            "97",
+            "-5",
             "",
             "",
             "",
@@ -1501,7 +1961,7 @@
             "Пластина M14 200x250",
             "M14",
             "шт",
-            "-17",
+            "-117",
             "",
             "",
             "",
@@ -1547,9 +2007,12 @@
         "M14"
     ],
     "urls": {
-        "Списание материалов (веб-форма)": "https://script.google.com/macros/s/AKfycbwk-z3gPX-MHImx5D4nG537XAj4ejZOO7eFh_gKTrpr92o_vRbNT1uHKr9cIXyZs3dKzQ/exec",
-        "Внести объемы материалов": "https://script.google.com/macros/s/AKfycbwTWkJZFc0PHZwHlTfMt0E03HxxcQemX7VDAvhCzbxt5_bY43R9cvCMGOSf-IxPZ36D/exec",
-        "Закупка материалов": "https://script.google.com/macros/s/AKfycbx0xfZ3PB1tMQSDb3o_M_HBTCoayIDIhsm6zg8fwY7hwzcXXWqJ2ETOCGsqh5NEVbDMjw/exec"
+        "Списание материалов (веб-форма)": "https://script.google.com/macros/s/AKfycbw2WsE_i5ezyD1M5QxQykuA0L3td7hBYsmRB2gLLbRh9z8T7XFv4ZuMzSjBi5ilLsTNTQ/exec",
+        "Внести объемы материалов": "https://script.google.com/macros/s/AKfycbyMZGL7FdcLfh6whGqBiBRuzDUo_t_mr4wN5fSgNcpaJubLjUAFW7oCGecr3fh6OJ6C/exec",
+        "Закупка материалов": "https://script.google.com/macros/s/AKfycbze9euoBmIBJVuhG--1Y3uTXO86DxKS3ceaNI1FGyFHxupbfFGmiQj7ae1yeEA97UmZMA/exec",
+        "ЗМ": "https://script.google.com/macros/s/AKfycbx0xfZ3PB1tMQSDb3o_M_HBTCoayIDIhsm6zg8fwY7hwzcXXWqJ2ETOCGsqh5NEVbDMjw/exec",
+        "ВОМ": "https://script.google.com/macros/s/AKfycbwTWkJZFc0PHZwHlTfMt0E03HxxcQemX7VDAvhCzbxt5_bY43R9cvCMGOSf-IxPZ36D/exec",
+        "СМ ": "https://script.google.com/macros/s/AKfycbwk-z3gPX-MHImx5D4nG537XAj4ejZOO7eFh_gKTrpr92o_vRbNT1uHKr9cIXyZs3dKzQ/exec"
     },
     "instruments": [
         {
@@ -8669,7 +9132,47 @@
             "Кому выдан инструмент": "фывфыв",
             "Инструмент": "Долото",
             "кол-во": 1
+        },
+        {
+            "№ строки": 15,
+            "Дата": "2025-03-27 17:52:13",
+            "Тип операции": "Расход",
+            "Кто": "Червяков Ф.О.",
+            "Номер договора": "33-25/СВ",
+            "Кому выдан инструмент": 1,
+            "Инструмент": "Компрессор маслянный",
+            "кол-во": 1
+        },
+        {
+            "№ строки": 16,
+            "Дата": "2025-03-27 17:52:41",
+            "Тип операции": "Приход",
+            "Кто": "Червяков Ф.О.",
+            "Номер договора": "33-25/СВ",
+            "Кому выдан инструмент": 1,
+            "Инструмент": "болгарка",
+            "кол-во": 1
+        },
+        {
+            "№ строки": 17,
+            "Дата": "2025-03-27 17:53:06",
+            "Тип операции": "Приход",
+            "Кто": "Червяков Ф.О.",
+            "Номер договора": 12,
+            "Кому выдан инструмент": 1,
+            "Инструмент": "штепсель",
+            "кол-во": 1
+        },
+        {
+            "№ строки": 18,
+            "Дата": "2025-03-28 12:22:04",
+            "Тип операции": "Приход",
+            "Кто": "Червяков Ф.О.",
+            "Номер договора": 12,
+            "Кому выдан инструмент": "фыв",
+            "Инструмент": "болгарка",
+            "кол-во": 1
         }
     ],
-    "last_updated": "2025-03-27T18:57:25.156889"
+    "last_updated": "2025-05-22T12:09:27.636477"
 }

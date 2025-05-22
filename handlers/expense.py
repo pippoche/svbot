@@ -4,7 +4,7 @@ import datetime
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ContextTypes, ConversationHandler
 from sheets import get_projects_list, record_expense, get_project_direction, get_role_permissions, caches  # Добавлен caches
-from utils import build_project_keyboard
+from utils import build_project_keyboard, decode_callback_data
 
 logger = logging.getLogger(__name__)
 
@@ -33,7 +33,8 @@ async def select_project(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     query = update.callback_query
     await query.answer()
     user_id = update.effective_user.id
-    project_tag = query.data.replace("proj_", "")
+    raw = decode_callback_data(query.data)
+    tag = raw.replace("proj_", "")
     role = context.user_data.get("role", "")
     if project_tag == "Накладные":
         context.user_data["expense_project"] = "Накладные"  # Без проверки разрешения

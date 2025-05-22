@@ -23,12 +23,13 @@ def register_handlers(application: Application):
         entry_points=[CallbackQueryHandler(write_off.start_write_off, pattern="write_off")],
         states={
             write_off.SELECT_PROJECT: [
-                CallbackQueryHandler(write_off.select_project, pattern=r"proj_.*"),
+                CallbackQueryHandler(write_off.select_project),  # pattern убран!
                 CallbackQueryHandler(write_off.manual_project, pattern="manual"),
                 MessageHandler(filters.TEXT & ~filters.COMMAND, write_off.manual_project_tag)
             ],
             write_off.SELECT_MATERIAL: [
-                CallbackQueryHandler(write_off.enter_quantity, pattern=r"mat_.*"),
+                CallbackQueryHandler(write_off.enter_quantity, pattern=r"^(?!submit$|manual_material$).*"),
+                # ВСЁ, кроме submit и manual_material (то есть base64 материалы)
                 CallbackQueryHandler(write_off.manual_material, pattern="manual_material"),
                 CallbackQueryHandler(write_off.submit_materials, pattern="submit"),
                 MessageHandler(filters.TEXT & ~filters.COMMAND, write_off.manual_material_entry)
@@ -44,7 +45,7 @@ def register_handlers(application: Application):
     expense_conv = ConversationHandler(
         entry_points=[CallbackQueryHandler(expense.start_add_expense, pattern="add_expense")],
         states={
-            expense.SELECT_PROJECT: [CallbackQueryHandler(expense.select_project, pattern=r"proj_.*")],
+            expense.SELECT_PROJECT: [CallbackQueryHandler(expense.select_project)],  # pattern убран!
             expense.ENTER_DETAILS: [MessageHandler(filters.TEXT & ~filters.COMMAND, expense.enter_details)],
             expense.SUBMIT_EXPENSE: [CallbackQueryHandler(expense.submit_expense, pattern="submit")]
         },
@@ -68,7 +69,7 @@ def register_handlers(application: Application):
     status_conv = ConversationHandler(
         entry_points=[CallbackQueryHandler(status_change.start_status_change, pattern="change_status")],
         states={
-            status_change.STATUS_TAG: [CallbackQueryHandler(status_change.status_tag, pattern=r"proj_.*")],
+            status_change.STATUS_TAG: [CallbackQueryHandler(status_change.status_tag)],  # pattern убран!
             status_change.STATUS_CHANGE: [CallbackQueryHandler(status_change.status_change, pattern=r"^(?!main_menu$).*$")]
         },
         fallbacks=[CallbackQueryHandler(start.back_to_menu, pattern="main_menu")],
@@ -80,12 +81,14 @@ def register_handlers(application: Application):
         entry_points=[CallbackQueryHandler(ferma_write_off.start_ferma_write_off, pattern="ferma_write_off")],
         states={
             ferma_write_off.FERMA_PROJECT: [
-                CallbackQueryHandler(ferma_write_off.select_ferma_project, pattern=r"proj_.*")],
+                CallbackQueryHandler(ferma_write_off.select_ferma_project)],  # pattern убран!
             ferma_write_off.FERMA_TYPE: [CallbackQueryHandler(ferma_write_off.select_ferma_type, pattern=r"type_.*")],
             ferma_write_off.FERMA_MATERIAL: [
-                CallbackQueryHandler(ferma_write_off.select_ferma_material, pattern=r"mat_.*|submit")],
+                CallbackQueryHandler(ferma_write_off.select_ferma_material),  # pattern убран!
+                CallbackQueryHandler(ferma_write_off.select_ferma_material, pattern="submit")],
             ferma_write_off.FERMA_PLATE_TYPE: [
-                CallbackQueryHandler(ferma_write_off.select_plate_type, pattern=r"plate_.*|submit")],
+                CallbackQueryHandler(ferma_write_off.select_plate_type),  # pattern убран!
+                CallbackQueryHandler(ferma_write_off.select_plate_type, pattern="submit")],
             ferma_write_off.FERMA_QUANTITY: [
                 MessageHandler(filters.TEXT & ~filters.COMMAND, ferma_write_off.enter_ferma_quantity)],
             ferma_write_off.FERMA_SUBMIT: [CallbackQueryHandler(ferma_write_off.submit_ferma, pattern="submit")],
@@ -98,7 +101,7 @@ def register_handlers(application: Application):
     delivery_conv = ConversationHandler(
         entry_points=[CallbackQueryHandler(delivery.start_delivery, pattern="delivery")],
         states={
-            delivery.SELECT_PROJECT: [CallbackQueryHandler(delivery.select_project, pattern=r"proj_.*")],
+            delivery.SELECT_PROJECT: [CallbackQueryHandler(delivery.select_project)],  # pattern убран!
             delivery.SELECT_DEPARTMENT: [CallbackQueryHandler(delivery.select_department, pattern=r"^(Строительство|Производство|Накладные)$")],
             delivery.ENTER_AMOUNT: [MessageHandler(filters.TEXT & ~filters.COMMAND, delivery.enter_amount)],
             delivery.ENTER_NOTE: [
@@ -115,11 +118,11 @@ def register_handlers(application: Application):
     instrument_conv = ConversationHandler(
         entry_points=[CallbackQueryHandler(instrument.start_instrument, pattern="instrument")],
         states={
-            instrument.SELECT_PROJECT: [CallbackQueryHandler(instrument.select_project, pattern=r"proj_.*")],
+            instrument.SELECT_PROJECT: [CallbackQueryHandler(instrument.select_project)],  # pattern убран!
             instrument.TRANSACTION_TYPE: [CallbackQueryHandler(instrument.transaction_type, pattern=r"^(Приход|Расход)$")],
             instrument.RECIPIENT: [MessageHandler(filters.TEXT & ~filters.COMMAND, instrument.recipient)],
             instrument.SELECT_INSTRUMENT: [
-                CallbackQueryHandler(instrument.select_instrument, pattern=r"inst_.*"),
+                CallbackQueryHandler(instrument.select_instrument),  # pattern убран!
                 CallbackQueryHandler(instrument.submit_instrument, pattern="submit")
             ],
             instrument.ENTER_QUANTITY: [MessageHandler(filters.TEXT & ~filters.COMMAND, instrument.enter_quantity)],

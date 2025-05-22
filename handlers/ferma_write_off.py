@@ -4,7 +4,7 @@ import datetime
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ContextTypes, ConversationHandler
 from sheets import get_projects_list, get_project_direction, get_materials_by_direction, get_plates_by_type, record_ferma_write_off, caches
-from utils import build_project_keyboard, build_material_keyboard
+from utils import build_project_keyboard, build_material_keyboard, decode_callback_data
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -35,7 +35,8 @@ async def select_ferma_project(update: Update, context: ContextTypes.DEFAULT_TYP
     query = update.callback_query
     await query.answer()
     user_id = update.effective_user.id
-    tag = query.data.replace("proj_", "")
+    raw = decode_callback_data(query.data)
+    tag = raw.replace("proj_", "")
     context.user_data["ferma_project_tag"] = tag
     project = next((p for p in get_projects_list(context.user_data.get("role", "")) if str(p["Номер договора"]) == tag), None)
     if not project:
@@ -103,16 +104,20 @@ async def select_ferma_type(update: Update, context: ContextTypes.DEFAULT_TYPE) 
 async def select_ferma_material(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
     await query.answer()
-    user_id = update.effective_user.id
+
+    # Тоже для base64, НЕ для "submit"
     if query.data == "submit":
         return await submit_ferma(update, context)
-    material = query.data.replace("mat_", "")
+
+    raw = decode_callback_data(query.data)
+    material = raw.replace("mat_", "")
     context.user_data["ferma_current_item"] = material
     direction = get_project_direction(context.user_data.get("ferma_project_tag", ""))
     materials = [m for m in get_materials_by_direction(direction) if "Фермы" in m.get("Тип сделки", "").split()]
     unit = next((m['unit'] for m in materials if m['name'] == material), "шт")
     await query.edit_message_text(f"Введите количество для {material} ({unit}):")
     return FERMA_QUANTITY
+
 
 async def select_plate_type(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query

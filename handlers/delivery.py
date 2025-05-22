@@ -4,7 +4,7 @@ import datetime
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ContextTypes, ConversationHandler
 from sheets import get_projects_list, record_delivery, caches
-from utils import build_project_keyboard
+from utils import build_project_keyboard, decode_callback_data
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)  # Добавлено для подробных логов
@@ -35,7 +35,8 @@ async def select_project(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     query = update.callback_query
     await query.answer()
     user_id = update.effective_user.id
-    project = query.data.replace("proj_", "")
+    raw = decode_callback_data(query.data)
+    project = raw.replace("proj_", "")
     context.user_data["delivery_project"] = project
     logger.info(f"User {user_id}: Выбран проект '{project}' для доставки")
     keyboard = [

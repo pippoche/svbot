@@ -3,6 +3,7 @@ import logging
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ContextTypes, ConversationHandler
 from sheets import get_projects_list, update_project_status
+from utils import decode_callback_data
 
 logger = logging.getLogger(__name__)
 
@@ -30,7 +31,8 @@ async def status_tag(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
     await query.answer()
     user_id = update.effective_user.id
-    tag = query.data.replace("proj_", "")
+    raw = decode_callback_data(query.data)
+    tag = raw.replace("proj_", "")
     if tag == "main_menu":
         from handlers.start import back_to_menu
         await back_to_menu(update, context)

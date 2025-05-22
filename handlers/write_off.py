@@ -4,7 +4,7 @@ import datetime
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ContextTypes, ConversationHandler
 from sheets import get_projects_list, get_project_direction, get_materials_by_direction, record_write_off, caches
-from utils import build_project_keyboard, build_material_keyboard
+from utils import build_project_keyboard, build_material_keyboard, decode_callback_data
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
@@ -31,7 +31,8 @@ async def select_project(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     query = update.callback_query
     await query.answer()
     user_id = update.effective_user.id
-    tag = query.data.replace("proj_", "")
+    raw = decode_callback_data(query.data)
+    tag = raw.replace("proj_", "")
     role = context.user_data.get("role", "")
     project = next((p for p in get_projects_list(role) if str(p["Номер договора"]) == tag), None)
     if not project:
@@ -48,15 +49,26 @@ async def select_project(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     return SELECT_MATERIAL
 
 async def enter_quantity(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    logger.info("LOG: enter_quantity вызван")
     query = update.callback_query
     await query.answer()
-    material = query.data.replace("mat_", "")
+
+    # Для не-кодированных callback_data — ничего не декодируем
+    if query.data in ("submit", "main_menu", "manual_material"):
+        # Эти кнопки должен ловить отдельный обработчик!
+        # Можно здесь просто return или pass, если вдруг попадёт — или не делать ничего, т.к. это не твоя зона ответственности.
+        return
+
+    # Все остальные — это base64-материалы
+    raw = decode_callback_data(query.data)
+    material = raw.replace("mat_", "")
     context.user_data["current_material"] = material
     direction = get_project_direction(context.user_data.get("project_tag", ""))
     materials = get_materials_by_direction(direction)
     unit = next((m["unit"] for m in materials if m["name"] == material), "шт")
     await query.edit_message_text(f"Введите количество для {material} ({unit}):")
     return ENTER_QUANTITY
+
 
 async def manual_project(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     await update.callback_query.answer()
@@ -82,17 +94,20 @@ async def manual_project_tag(update: Update, context: ContextTypes.DEFAULT_TYPE)
     return SELECT_MATERIAL
 
 async def manual_material(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    logger.info("LOG: manual_material вызван")
     await update.callback_query.answer()
     await update.callback_query.edit_message_text("Введите название материала:")
     return SELECT_MATERIAL
 
 async def manual_material_entry(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    logger.info("LOG: manual_material_entry вызван")
     material = update.message.text.strip()
     context.user_data["current_material"] = material
     await update.message.reply_text(f"Введите количество для {material} (шт):")
     return ENTER_QUANTITY
 
 async def confirm_material(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    logger.info("LOG: confirm_material вызван")
     user_id = update.effective_user.id
     try:
         quantity = float(update.message.text.strip().replace(",", "."))
@@ -114,14 +129,19 @@ async def confirm_material(update: Update, context: ContextTypes.DEFAULT_TYPE) -
     return SELECT_MATERIAL
 
 async def submit_materials(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    logger.info("LOG: submit_materials вызван")
     query = update.callback_query
     await query.answer()
     user_id = update.effective_user.id
+
     if query.data == "main_menu":
         from handlers.start import back_to_menu
         await back_to_menu(update, context)
         logger.debug(f"User {user_id}: Нажата кнопка 'Вернуться в меню' в submit_materials")
         return ConversationHandler.END
+
+    # ТУТ НЕ ДЕКОДИРУЕМ callback_data, потому что submit не кодируется!
+
     mat_inputs = context.user_data.get("mat_inputs", {})
     project_tag = context.user_data.get("project_tag", "unknown")
     if not mat_inputs:
@@ -129,10 +149,10 @@ async def submit_materials(update: Update, context: ContextTypes.DEFAULT_TYPE) -
         await query.edit_message_text("Не выбраны материалы для списания.")
         return ConversationHandler.END
     date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    login = str(context.user_data.get("login", "unknown"))  # Приводим к строке
+    login = str(context.user_data.get("login", "unknown"))
     employee_data = next((emp for emp in caches["employees"] if str(emp["Логин"]) == login), None)
-    user = employee_data["Ф.И.О"] if employee_data else login  # ФИО или логин
-    logger.debug(f"User {user_id}: Login={login}, Employee_data={employee_data}, User={user}")  # Отладка
+    user = employee_data["Ф.И.О"] if employee_data else login
+    logger.debug(f"User {user_id}: Login={login}, Employee_data={employee_data}, User={user}")
     direction = context.user_data.get("department", "Строительство")
     records = [
         [date, "Расход", user, "", direction, material, info["quantity"], "", "", "", project_tag]
