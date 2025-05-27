@@ -1,10 +1,9 @@
-# handlers/expense.py
 import logging
 import datetime
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ContextTypes, ConversationHandler
-from sheets import get_projects_list, record_expense, get_project_direction, get_role_permissions, caches  # Добавлен caches
-from utils import build_project_keyboard, decode_callback_data
+from sheets import get_projects_list, record_expense, get_project_direction, get_role_permissions, caches
+from utils import build_project_keyboard
 
 logger = logging.getLogger(__name__)
 
@@ -21,7 +20,7 @@ async def start_add_expense(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         [InlineKeyboardButton(f"{p['Номер договора']} ({p['Ф.И.О заказчика']})", callback_data=f"proj_{p['Номер договора']}")]
         for p in projects if p.get('Номер договора')
     ]
-    keyboard.append([InlineKeyboardButton("Накладные", callback_data="proj_Накладные")])  # Добавляем "Накладные"
+    keyboard.append([InlineKeyboardButton("Накладные", callback_data="proj_Накладные")])
     keyboard.append([InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")])
     reply_markup = InlineKeyboardMarkup(keyboard)
     await update.callback_query.edit_message_text(
@@ -33,12 +32,14 @@ async def select_project(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     query = update.callback_query
     await query.answer()
     user_id = update.effective_user.id
-    raw = decode_callback_data(query.data)
-    tag = raw.replace("proj_", "")
+    tag = query.data.replace("proj_", "")
     role = context.user_data.get("role", "")
+    project_tag = tag
+
     if project_tag == "Накладные":
-        context.user_data["expense_project"] = "Накладные"  # Без проверки разрешения
+        context.user_data["expense_project"] = "Накладные"
     else:
+        # Проверяем есть ли такой проект по номеру договора!
         project = next((p for p in get_projects_list(role) if str(p["Номер договора"]) == str(project_tag)), None)
         if not project:
             logger.warning(f"User {user_id}: Проект '{project_tag}' не найден")
@@ -48,6 +49,7 @@ async def select_project(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
             )
             return ConversationHandler.END
         context.user_data["expense_project"] = project_tag
+
     logger.info(f"User {user_id}: Выбран проект '{project_tag}' для расхода")
     await query.edit_message_text("Введите данные расхода (например, 'Клавиатура, 1, шт, 1000'):")
     return ENTER_DETAILS
@@ -96,26 +98,37 @@ async def submit_expense(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         await back_to_menu(update, context)
         logger.debug(f"User {user_id}: Нажата кнопка 'Вернуться в меню' в submit_expense")
         return ConversationHandler.END
+
     project = context.user_data.get("expense_project", "unknown")
     details = context.user_data.get("expense_details", {})
-    login = str(context.user_data.get("login", "unknown"))  # Приводим к строке
+    login = str(context.user_data.get("login", "unknown"))
     employee_data = next((emp for emp in caches["employees"] if str(emp["Логин"]) == login), None)
-    user = employee_data["Ф.И.О"] if employee_data else login  # ФИО или логин
+    user = employee_data["Ф.И.О"] if employee_data else login
     date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     total_price = details["quantity"] * details["amount"]
     direction = "Накладные" if project == "Накладные" else context.user_data.get("department", "Строительство")
-    record = [date, "Расход", user, "Наличные", direction, details["name"], details["quantity"], details["unit"], "", details["amount"], project]
+
+    # --- Главное исправление: в таблицу пишем "Номер договора", а не ID! ---
+    project_num = project
+    if project not in ("Накладные", "unknown"):
+        # Находим по номеру договора "правильный" вариант, если нужно (можно убрать этот шаг)
+        all_projects = caches.get("projects", [])
+        found = next((p for p in all_projects if str(p.get("Номер договора")) == str(project)), None)
+        if found:
+            project_num = found.get("Номер договора", project)
+
+    record = [date, "Расход", user, "Наличные", direction, details["name"], details["quantity"], details["unit"], "", details["amount"], project_num]
     if record_expense([record]):
-        text = f"Расход '{details['name']}' на сумму {total_price} для '{project}' (отдел: {direction}) успешно записан!"
+        text = f"Расход '{details['name']}' на сумму {total_price} для '{project_num}' (отдел: {direction}) успешно записан!"
         await query.edit_message_text(
             text,
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")]])
         )
-        logger.info(f"User {user_id}: Расход записан для проекта {project}")
+        logger.info(f"User {user_id}: Расход записан для проекта {project_num}")
     else:
         await query.edit_message_text(
             "Ошибка при записи расхода.",
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")]])
         )
-        logger.error(f"User {user_id}: Ошибка записи расхода для проекта {project}")
+        logger.error(f"User {user_id}: Ошибка записи расхода для проекта {project_num}")
     return ConversationHandler.END

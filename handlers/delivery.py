@@ -4,10 +4,10 @@ import datetime
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ContextTypes, ConversationHandler
 from sheets import get_projects_list, record_delivery, caches
-from utils import build_project_keyboard, decode_callback_data
+from utils import build_project_keyboard
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.DEBUG)  # Добавлено для подробных логов
+logging.basicConfig(level=logging.DEBUG)  # Подробные логи
 
 SELECT_PROJECT, SELECT_DEPARTMENT, ENTER_AMOUNT, ENTER_NOTE, SUBMIT_DELIVERY = range(1, 6)
 
@@ -24,7 +24,6 @@ async def start_delivery(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         logger.warning(f"User {user_id}: Проекты не найдены")
         return ConversationHandler.END
     reply_markup = build_project_keyboard(projects)
-    # Преобразуем кортеж в список и добавляем "Накладные"
     keyboard = list(reply_markup.inline_keyboard)
     keyboard.append([InlineKeyboardButton("Накладные", callback_data="proj_Накладные")])
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -35,8 +34,8 @@ async def select_project(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     query = update.callback_query
     await query.answer()
     user_id = update.effective_user.id
-    raw = decode_callback_data(query.data)
-    project = raw.replace("proj_", "")
+    # ВМЕСТО decode_callback_data просто делаем .replace:
+    project = query.data.replace("proj_", "")
     context.user_data["delivery_project"] = project
     logger.info(f"User {user_id}: Выбран проект '{project}' для доставки")
     keyboard = [
@@ -47,7 +46,7 @@ async def select_project(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     logger.debug(f"User {user_id}: Кнопка 'Вернуться в меню' в select_project: {'main_menu' in str(reply_markup)}")
-    await query.message.reply_text("Выберите отдел для доставки:", reply_markup=reply_markup)  # Изменено на reply_text
+    await query.message.reply_text("Выберите отдел для доставки:", reply_markup=reply_markup)
     return SELECT_DEPARTMENT
 
 async def select_department(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -62,7 +61,7 @@ async def select_department(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         return ConversationHandler.END
     context.user_data["delivery_department"] = department
     logger.info(f"User {user_id}: Выбран отдел '{department}' для доставки")
-    await query.message.reply_text("Введите сумму доставки (например, 5000):")  # Изменено на reply_text
+    await query.message.reply_text("Введите сумму доставки (например, 5000):")
     return ENTER_AMOUNT
 
 async def enter_amount(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -104,7 +103,7 @@ async def enter_note(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
         return ConversationHandler.END
     else:
         logger.info(f"User {user_id}: Запрошено добавление примечания")
-        await query.message.reply_text("Введите примечание (например, 'Макет стены на выставку'):")  # Изменено на reply_text
+        await query.message.reply_text("Введите примечание (например, 'Макет стены на выставку'):")
         return ENTER_NOTE
 
 async def process_note(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -112,6 +111,7 @@ async def process_note(update: Update, context: ContextTypes.DEFAULT_TYPE) -> in
     context.user_data["delivery_note"] = update.message.text.strip()
     logger.info(f"User {user_id}: Примечание добавлено: {context.user_data['delivery_note']}")
     return await submit_delivery(update, context, is_message=True)
+
 
 async def submit_delivery(update: Update, context: ContextTypes.DEFAULT_TYPE, is_message=False) -> int:
     user_id = update.effective_user.id
@@ -121,36 +121,43 @@ async def submit_delivery(update: Update, context: ContextTypes.DEFAULT_TYPE, is
         query = update.callback_query
         await query.answer()
         message = query.message
+
     project = context.user_data.get("delivery_project", "unknown")
     amount = context.user_data.get("delivery_amount", 0)
     department = context.user_data.get("delivery_department", "Строительство")
     note = context.user_data.get("delivery_note", "")
-    login = str(context.user_data.get("login", "unknown"))  # Приводим к строке
+    login = str(context.user_data.get("login", "unknown"))
     employee_data = next((emp for emp in caches["employees"] if str(emp["Логин"]) == login), None)
-    user = employee_data["Ф.И.О"] if employee_data else login  # ФИО или логин
-    logger.debug(f"User {user_id}: Login={login}, Employee_data={employee_data}, User={user}")  # Отладка
+    user = employee_data["Ф.И.О"] if employee_data else login
     date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    # --- Исправление: вытаскиваем "Номер договора" ---
+    project_num = project
+    if project != "Накладные" and project != "unknown":
+        all_projects = caches.get("projects", [])
+        found = next((p for p in all_projects if str(p.get("ID проекта")) == str(project)), None)
+        if found:
+            project_num = found.get("Номер договора", project)
+
     if project == "unknown" or amount <= 0:
-        logger.error(f"User {user_id}: Ошибка доставки - проект: {project}, сумма: {amount}")
         await message.reply_text(
             "Ошибка: не указан проект или сумма доставки.",
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")]])
         )
         return ConversationHandler.END
-    record = [date, "Расход", user, "", department, "Доставка", 1, "", "", amount, project, note]
+    record = [date, "Расход", user, "", department, "Доставка", 1, "", "", amount, project_num, note]
     if record_delivery([record]):
-        text = f"Доставка на сумму {amount} для '{project}' ({department}) успешно записана!"
+        text = f"Доставка на сумму {amount} для '{project_num}' ({department}) успешно записана!"
         if note:
             text += f"\nПримечание: {note}"
         await message.reply_text(
             text,
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")]])
         )
-        logger.info(f"User {user_id}: Доставка записана для проекта {project}")
     else:
         await message.reply_text(
             "Ошибка при записи доставки.",
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")]])
         )
-        logger.error(f"User {user_id}: Ошибка записи доставки для проекта {project}")
     return ConversationHandler.END
+

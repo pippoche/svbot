@@ -3,7 +3,6 @@ import logging
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ContextTypes, ConversationHandler
 from sheets import get_projects_list, update_project_status
-from utils import decode_callback_data
 
 logger = logging.getLogger(__name__)
 

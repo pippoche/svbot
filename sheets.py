@@ -12,7 +12,8 @@ __all__ = [
     "get_projects_list", "update_project_status", "create_project_record", "get_materials_by_direction",
     "get_employee_data", "get_role_permissions", "can_write_off_at_status", "record_expense",
     "record_instrument_transaction", "add_new_instrument", "record_delivery", "record_ferma_write_off",
-    "get_plates_by_type", "get_plate_stock", "get_web_form_url", "get_instruments"
+    "get_plates_by_type", "get_plate_stock", "get_web_form_url", "get_instruments",
+    "get_materials_by_category", "get_material_categories", "get_plate_categories", "get_plates_by_category"
 ]
 
 HEADERS = ["ID проекта", "Ф.И.О заказчика", "Номер договора", "Тип сделки", "Статус", "Дата создания", "Примечание", "Ссылка на отчёт"]
@@ -33,7 +34,11 @@ caches = {
     "urls": None,
     "instruments": None,
     "where_instruments": None,
-    "last_updated": None
+    "last_updated": None,
+    "material_categories": None,         # Категории материалов
+    "materials_by_category": None,       # Материалы по категориям
+    "plate_categories": None,            # Категории пластин
+    "plates_by_category": None           # Пластины по категориям
 }
 
 def find_header_row(all_values, required_headers):
@@ -57,6 +62,7 @@ def load_caches(force=False):
         sheet_names = [sheet.title for sheet in spreadsheet.worksheets()]
         logger.info(f"Доступные листы в таблице: {sheet_names}")
 
+        # --- Проекты ---
         projects_sheet = spreadsheet.worksheet("Проекты")
         projects_all_values = projects_sheet.get_all_values()
         projects_header_row = find_header_row(projects_all_values, ["ID проекта", "Номер договора"])
@@ -69,6 +75,7 @@ def load_caches(force=False):
             caches["projects"] = sorted(projects_data, key=lambda x: x.get("Дата создания", ""), reverse=True)
             logger.info(f"Проекты загружены, записей: {len(caches['projects'])}")
 
+        # --- Сотрудники ---
         employees_sheet = spreadsheet.worksheet("Сотрудники")
         employees_all_values = employees_sheet.get_all_values()
         employees_header_row = find_header_row(employees_all_values, ["ID", "Ф.И.О"])
@@ -81,27 +88,36 @@ def load_caches(force=False):
             caches["employees"] = employees_data
             logger.info(f"Сотрудники загружены, записей: {len(caches['employees'])}")
 
+        # --- Права ---
         perms_data = spreadsheet.worksheet("Действия и разрешения").get_all_values()
         caches["permissions"] = perms_data
         logger.info(f"Действия и разрешения загружены, строк: {len(caches['permissions'])}")
 
-        materials_sheet = spreadsheet.worksheet("Материалы")
-        materials_all_values = materials_sheet.get_all_values()
-        materials_header_row = find_header_row(materials_all_values, ["ID", "Наименование"])
-        if materials_header_row is None:
-            logger.error("Заголовки таблицы материалов не найдены в листе 'Материалы'.")
-            caches["materials"] = []
-        else:
-            logger.info(f"Заголовки листа 'Материалы' найдены на строке {materials_header_row}: {materials_all_values[materials_header_row - 1]}")
-            materials_data = materials_sheet.get_all_records(expected_headers=MATERIAL_HEADERS, head=materials_header_row)
-            caches["materials"] = materials_data
-            logger.info(f"Материалы загружены, записей: {len(caches['materials'])}")
+            # --- Основные материалы: теперь только через парсер категорий (вертикально, одна вкладка) ---
+        try:
+            cats, mats = parse_materials_and_categories()
+            caches["material_categories"] = cats
+            caches["materials_by_category"] = mats
+            logger.info(f"Категорий материалов: {len(cats)}. Пример: {cats[:5]}")
+        except Exception as e:
+            logger.error(f"Ошибка разбора категорий материалов: {e}")
 
+        # --- Пластины ---
         plates_data = spreadsheet.worksheet("Пластины МЗП").get_all_values()
         caches["plate_types"] = [row[1] for row in plates_data[1:6] if row and row[1] and row[1] != "Тип пластин"]
         caches["plates"] = plates_data[6:]
         logger.info(f"Типы пластин: {len(caches['plate_types'])}, пластины: {len(caches['plates'])}")
 
+        # --- Категории пластин (ГОРИЗОНТАЛЬНО) ---
+        try:
+            cats, plates = parse_plate_categories_and_plates()
+            caches["plate_categories"] = cats
+            caches["plates_by_category"] = plates
+            logger.info(f"Категорий пластин: {len(cats)}. Пример: {cats[:5]}")
+        except Exception as e:
+            logger.error(f"Ошибка разбора категорий пластин: {e}")
+
+        # --- URL действия ---
         urls_sheet = spreadsheet.worksheet("URL действия")
         urls_all_values = urls_sheet.get_all_values()
         urls_header_row = find_header_row(urls_all_values, ["Действие", "URL"])
@@ -114,6 +130,7 @@ def load_caches(force=False):
             caches["urls"] = {row["Действие"]: row["URL"] for row in urls_data if row.get("URL", "")}
             logger.info(f"URL действия загружены, записей: {len(caches['urls'])}")
 
+        # --- Инструменты ---
         instruments_sheet = spreadsheet.worksheet("Инструмент")
         instruments_all_values = instruments_sheet.get_all_values()
         instruments_header_row = find_header_row(instruments_all_values, ["ID инструмента", "Инструмент"])
@@ -126,6 +143,7 @@ def load_caches(force=False):
             caches["instruments"] = instruments_data
             logger.info(f"Инструменты загружены, записей: {len(caches['instruments'])}")
 
+        # --- Где инструмент ---
         where_instruments_sheet = spreadsheet.worksheet("Где инструмент")
         where_instruments_all_values = where_instruments_sheet.get_all_values()
         where_instruments_header_row = find_header_row(where_instruments_all_values, ["№ строки", "Дата"])
@@ -144,18 +162,136 @@ def load_caches(force=False):
         logger.error(f"Ошибка при загрузке кэшей: {str(e)}", exc_info=True)
         raise
 
-def schedule_cache_update():
-    while True:
-        now = datetime.datetime.now()
-        next_update = now.replace(hour=8, minute=0, second=0, microsecond=0)
-        if now > next_update:
-            next_update += datetime.timedelta(days=1)
-        time.sleep((next_update - now).total_seconds())
-        load_caches(force=True)
-        time.sleep(43200)
+# --- КАТЕГОРИИ МАТЕРИАЛОВ ---
+def parse_materials_and_categories():
+    """Парсит материалы и их категории из вертикальной таблицы (лист 'Материалы')"""
+    spreadsheet = client.open_by_key(SPREADSHEET_ID)
+    sheet = spreadsheet.worksheet("Материалы")
+    all_values = sheet.get_all_values()
 
-threading.Thread(target=schedule_cache_update, daemon=True).start()
+    # Находим строку с заголовками
+    header_row = None
+    for i, row in enumerate(all_values):
+        if any('категор' in cell.lower() for cell in row):
+            header_row = i
+            break
+    if header_row is None:
+        raise Exception("Не найдена строка с заголовками (Категория и т.д.) на листе 'Материалы'")
 
+    headers = all_values[header_row]
+    col_idx = {name.lower().strip(): idx for idx, name in enumerate(headers)}
+
+    # Ищем нужные столбцы
+    cat_col = col_idx.get('категория')
+    id_col = None
+    for key in col_idx:
+        if 'id' in key:
+            id_col = col_idx[key]
+            break
+    name_col = None
+    for key in col_idx:
+        if 'наимен' in key:
+            name_col = col_idx[key]
+            break
+    unit_col = None
+    for key in col_idx:
+        if 'ед.' in key:
+            unit_col = col_idx[key]
+            break
+    type_col = None
+    for key in col_idx:
+        if 'тип' in key and 'категор' not in key:
+            type_col = col_idx[key]
+            break
+
+    category_names = []
+    category_to_materials = {}
+
+    for row in all_values[header_row + 1:]:
+        if not row or (cat_col is not None and not row[cat_col].strip()):
+            continue
+        cat = row[cat_col].strip()
+        if cat and cat not in category_names:
+            category_names.append(cat)
+            category_to_materials[cat] = []
+        if not cat:
+            continue
+        mat_id = row[id_col].strip() if id_col is not None and id_col < len(row) else ''
+        mat_name = row[name_col].strip() if name_col is not None and name_col < len(row) else ''
+        mat_unit = row[unit_col].strip() if unit_col is not None and unit_col < len(row) else ''
+        mat_type = row[type_col].strip() if type_col is not None and type_col < len(row) else ''
+        if mat_id and mat_name:
+            category_to_materials[cat].append({
+                "ID": mat_id,
+                "Наименование": mat_name,
+                "Ед. измерения": mat_unit,
+                "Тип сделки": mat_type
+            })
+
+    return category_names, category_to_materials
+
+def get_material_categories():
+    if not caches.get("material_categories") or not caches.get("materials_by_category"):
+        cats, mats = parse_materials_and_categories()
+        caches["material_categories"] = cats
+        caches["materials_by_category"] = mats
+    return caches["material_categories"]
+
+def get_materials_by_category(cat):
+    if not caches.get("material_categories") or not caches.get("materials_by_category"):
+        get_material_categories()
+    return caches["materials_by_category"].get(cat, [])
+
+# --- КАТЕГОРИИ ПЛАСТИН ---
+def parse_plate_categories_and_plates():
+    spreadsheet = client.open_by_key(SPREADSHEET_ID)
+    sheet = spreadsheet.worksheet("Пластины МЗП")
+    all_values = sheet.get_all_values()
+
+    # Найдём строку заголовков (ищем слово "категория" по колонкам)
+    header_row = 0
+    for i, row in enumerate(all_values):
+        if any("категория" in cell.lower() for cell in row):
+            header_row = i
+            break
+
+    data = all_values[header_row+1:]  # данные начинаются после строки заголовков
+
+    category_to_plates = {}
+    category_names = []
+    for row in data:
+        if len(row) < 2 or not row[0].strip():
+            continue
+        cat = row[0].strip()
+        if cat not in category_to_plates:
+            category_to_plates[cat] = []
+            category_names.append(cat)
+        plate = {
+            "ID": row[1].strip(),
+            "Наименование": row[2].strip(),
+            "Тип пластин": row[3].strip(),
+            "Ед. измерения": row[4].strip(),
+            "Кол-во на складе": row[5].strip() if len(row) > 5 else "",
+            "Вычисления": row[6].strip() if len(row) > 6 else "",
+        }
+        category_to_plates[cat].append(plate)
+
+    return category_names, category_to_plates
+
+
+def get_plate_categories():
+    if not caches.get("plate_categories") or not caches.get("plates_by_category"):
+        cats, plates = parse_plate_categories_and_plates()
+        caches["plate_categories"] = cats
+        caches["plates_by_category"] = plates
+    return caches["plate_categories"]
+
+def get_plates_by_category(cat):
+    if not caches.get("plate_categories") or not caches.get("plates_by_category"):
+        get_plate_categories()
+    return caches["plates_by_category"].get(cat, [])
+
+# ОСТАЛЬНЫЕ ФУНКЦИИ НЕ МЕНЯЛ!
 def record_write_off(data_list):
     try:
         worksheet = client.open_by_key(SPREADSHEET_ID).worksheet("Данные")
@@ -163,7 +299,7 @@ def record_write_off(data_list):
         start_row = last_row + 1
         for i, data in enumerate(data_list):
             row_num = start_row + i
-            row = [row_num] + data[:11]  # Ограничиваем до 12 элементов (A:L)
+            row = [row_num] + data[:11]
             if len(row) < 12:
                 row.extend([""] * (12 - len(row)))
             worksheet.update(f"A{row_num}:L{row_num}", [row])
@@ -180,7 +316,7 @@ def record_expense(data_list):
         start_row = last_row + 1
         for i, data in enumerate(data_list):
             row_num = start_row + i
-            row = [row_num] + data[:11]  # До "Номер договора"
+            row = [row_num] + data[:11]
             if len(row) < 12:
                 row.extend([""] * (12 - len(row)))
             worksheet.update(f"A{row_num}:L{row_num}", [row])
@@ -197,12 +333,11 @@ def record_instrument_transaction(data_list):
         start_row = last_row + 1
         for i, data in enumerate(data_list):
             row_num = start_row + i
-            # Добавляем номер строки как первый элемент
-            row = [row_num] + data  # Теперь row имеет 8 элементов (A:H)
+            row = [row_num] + data
             if len(row) < 8:
                 row.extend([""] * (8 - len(row)))
             elif len(row) > 8:
-                row = row[:8]  # Обрезаем до 8, если больше
+                row = row[:8]
             worksheet.update(f"A{row_num}:H{row_num}", [row])
         logger.info(f"Записана транзакция инструмента: {len(data_list)} строк в диапазоне A:H")
         caches["where_instruments"].extend([dict(zip(WHERE_INSTRUMENT_HEADERS, row)) for row in data_list])
@@ -233,11 +368,11 @@ def record_delivery(data_list):
         start_row = last_row + 1
         for i, data in enumerate(data_list):
             row_num = start_row + i
-            row = [row_num] + data  # Полный список из 13 элементов (A:M)
+            row = [row_num] + data
             if len(row) < 13:
                 row.extend([""] * (13 - len(row)))
             elif len(row) > 13:
-                row = row[:13]  # Обрезаем до 13, если больше
+                row = row[:13]
             worksheet.update(f"A{row_num}:M{row_num}", [row])
         logger.info(f"Записана доставка: {len(data_list)} строк в диапазоне A:M")
         return True
@@ -269,6 +404,7 @@ def get_plates_by_type(plate_type):
             if len(row) >= 5 and row[2] == plate_type and row[1]:
                 stock = float(row[4] or 0)
                 plates.append({
+                    "ID": row[0],
                     "name": row[1],
                     "unit": row[3],
                     "stock": stock
@@ -313,24 +449,22 @@ def update_project_report_link(tag, url):
         logger.error(f"Ошибка обновления ссылки отчета: {e}")
         return False
 
-
 def get_projects_list(role=None):
     try:
         projects = caches["projects"] or []
         logger.info(f"Всего проектов в кэше: {len(projects)}")
         if not role:
             logger.info("Роль не указана, возвращаем все проекты")
-            return projects
+            return [dict(p, id=p.get("ID проекта"), number=p.get("Номер договора")) for p in projects]
+
         role_lower = role.lower()
         perms = next((row for row in caches["permissions"] if row and row[0].lower() == role_lower), None)
         if not perms or len(perms) < 2:
             logger.warning(f"Разрешения для роли {role} не найдены.")
             return []
 
-        # Получаем разрешённые статусы (столбец B)
         visible_statuses_raw = perms[1] if perms[1] else ""
-        visible_statuses = visible_statuses_raw.split()  # Разбиваем по пробелам
-        # Собираем статусы вручную, учитывая составные ("В работе", "Продукция готова")
+        visible_statuses = visible_statuses_raw.split()
         statuses = []
         i = 0
         while i < len(visible_statuses):
@@ -342,17 +476,13 @@ def get_projects_list(role=None):
                 i += 1
         logger.info(f"Видимые статусы для роли '{role}': {statuses}")
 
-        # Фильтруем проекты
         filtered_projects = []
         for p in projects:
             project_status = p.get("Статус", "").lower().replace(" ", "")
             for status in statuses:
                 if project_status == status.lower().replace(" ", ""):
-                    filtered_projects.append(p)
-                    logger.debug(f"Проект '{p.get('Номер договора')}' со статусом '{p.get('Статус')}' добавлен для роли '{role}'")
+                    filtered_projects.append(dict(p, id=p.get("ID проекта"), number=p.get("Номер договора")))
                     break
-            else:
-                logger.debug(f"Проект '{p.get('Номер договора')}' со статусом '{p.get('Статус')}' исключён для роли '{role}'")
         logger.info(f"Для роли '{role}' найдено {len(filtered_projects)} проектов.")
         return filtered_projects
     except Exception as e:
@@ -392,12 +522,13 @@ def get_materials_by_direction(direction):
     try:
         materials = []
         for row in caches["materials"]:
+            mat = dict(row, id=row.get("ID"), name=row.get("Наименование"), unit=row.get("Ед. измерения"))
             if not direction:
-                materials.append({"name": row["Наименование"], "unit": row["Ед. измерения"], "Тип сделки": row["Тип сделки"]})
+                materials.append(mat)
             else:
                 types = row["Тип сделки"].lower().split()
                 if "все" in types or direction.rstrip("ы").lower() in types:
-                    materials.append({"name": row["Наименование"], "unit": row["Ед. измерения"], "Тип сделки": row["Тип сделки"]})
+                    materials.append(mat)
         return materials
     except Exception as e:
         logger.error(f"Ошибка получения материалов для {direction}: {e}")
@@ -407,7 +538,7 @@ def get_instruments():
     try:
         instruments = []
         for row in caches["instruments"]:
-            if row.get("Инструмент") and row["Инструмент"].strip():  # Фильтруем пустые строки
+            if row.get("Инструмент") and row["Инструмент"].strip():
                 try:
                     stock = float(row["Кол-во на складе"] or 0)
                 except (ValueError, TypeError):
@@ -478,6 +609,18 @@ def get_web_form_url(action):
     except Exception as e:
         logger.error(f"Ошибка получения URL для {action}: {e}")
         return ""
+
+def schedule_cache_update():
+    while True:
+        now = datetime.datetime.now()
+        next_update = now.replace(hour=8, minute=0, second=0, microsecond=0)
+        if now > next_update:
+            next_update += datetime.timedelta(days=1)
+        time.sleep((next_update - now).total_seconds())
+        load_caches(force=True)
+        time.sleep(43200)
+
+threading.Thread(target=schedule_cache_update, daemon=True).start()
 
 if __name__ == "__main__":
     load_caches()

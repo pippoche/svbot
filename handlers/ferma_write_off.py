@@ -1,30 +1,38 @@
-# handlers/ferma_write_off.py
 import logging
 import datetime
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ContextTypes, ConversationHandler
-from sheets import get_projects_list, get_project_direction, get_materials_by_direction, get_plates_by_type, record_ferma_write_off, caches
-from utils import build_project_keyboard, build_material_keyboard, decode_callback_data
+from sheets import (
+    get_projects_list, get_project_direction, get_materials_by_category,
+    get_plates_by_type, record_ferma_write_off, caches, get_plate_categories,
+    get_plates_by_category, parse_plate_categories_and_plates, get_employee_data
+)
+from utils import build_project_keyboard, build_material_keyboard
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
-FERMA_PROJECT, FERMA_TYPE, FERMA_MATERIAL, FERMA_PLATE_TYPE, FERMA_QUANTITY, FERMA_SUBMIT = range(6)
+FERMA_PROJECT, FERMA_TYPE, FERMA_MATERIAL_CAT, FERMA_MATERIAL, FERMA_CAT, FERMA_PLATE, FERMA_QUANTITY = range(7)
+
+def get_fullname_by_login(login):
+    employees = caches.get("employees", [])
+    for emp in employees:
+        if str(emp.get("Логин", "")) == str(login):
+            return emp.get("Ф.И.О", str(login))
+    return str(login)
 
 async def start_ferma_write_off(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     await update.callback_query.answer()
     role = context.user_data.get("role", "")
-    user_id = update.effective_user.id
-    logger.info(f"User {user_id}: Начало списания на фермы, роль={role}")
-    context.user_data["ferma_items"] = {}  # Очищаем перед началом нового списания
     projects = get_projects_list(role)
-    logger.info(f"User {user_id}: Найдено {len(projects)} проектов для списания на фермы")
     if not projects:
         await update.callback_query.edit_message_text(
             "Нет доступных проектов для списания на фермы.",
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")]])
         )
         return ConversationHandler.END
+    context.user_data["ferma_items"] = {}
+    context.user_data["ferma_mat_inputs"] = {}
     reply_markup = build_project_keyboard(projects)
     await update.callback_query.edit_message_text(
         "Выберите проект для списания на фермы:", reply_markup=reply_markup
@@ -34,26 +42,22 @@ async def start_ferma_write_off(update: Update, context: ContextTypes.DEFAULT_TY
 async def select_ferma_project(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
     await query.answer()
-    user_id = update.effective_user.id
-    raw = decode_callback_data(query.data)
-    tag = raw.replace("proj_", "")
-    context.user_data["ferma_project_tag"] = tag
-    project = next((p for p in get_projects_list(context.user_data.get("role", "")) if str(p["Номер договора"]) == tag), None)
+    tag = query.data.replace("proj_", "")
+    context.user_data["ferma_project_id"] = tag
+    project = next((p for p in get_projects_list(context.user_data.get("role", "")) if str(p["ID проекта"]) == tag), None)
     if not project:
-        logger.warning(f"User {user_id}: Проект '{tag}' не найден")
         await query.edit_message_text(
             f"Проект '{tag}' не найден.",
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")]])
         )
         return ConversationHandler.END
-    logger.info(f"User {user_id}: Выбран проект '{tag}' со статусом '{project['Статус']}'")
     keyboard = [
         [InlineKeyboardButton("Материалы", callback_data="type_materials")],
         [InlineKeyboardButton("Пластины", callback_data="type_plates")],
         [InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")]
     ]
     await query.edit_message_text(
-        f"Выбран проект: {tag}. Выберите тип списания:",
+        f"Выбран проект: {project['Номер договора']}. Выберите тип списания:",
         reply_markup=InlineKeyboardMarkup(keyboard)
     )
     return FERMA_TYPE
@@ -61,161 +65,213 @@ async def select_ferma_project(update: Update, context: ContextTypes.DEFAULT_TYP
 async def select_ferma_type(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
     await query.answer()
-    user_id = update.effective_user.id
     if query.data == "main_menu":
         from handlers.start import back_to_menu
         await back_to_menu(update, context)
         return ConversationHandler.END
     context.user_data["ferma_type"] = query.data
-    logger.info(f"User {user_id}: Выбран тип списания: {query.data}")
     if query.data == "type_materials":
-        direction = get_project_direction(context.user_data["ferma_project_tag"])
-        materials = [m for m in get_materials_by_direction(direction) if "Фермы" in m.get("Тип сделки", "").split()]
-        if not materials:
-            logger.warning(f"User {user_id}: Материалы для ферм не найдены")
-            await query.edit_message_text("Материалы для ферм не найдены.")
-            return ConversationHandler.END
-        reply_markup = build_material_keyboard(materials, context.user_data["ferma_items"], show_submit=True)
-        await query.edit_message_text("Выберите материал:", reply_markup=reply_markup)
-        return FERMA_MATERIAL
-    else:
-        from sheets import caches
-        all_plates = []
-        for plate_type in caches["plate_types"]:
-            all_plates.extend(get_plates_by_type(plate_type))
-        if not all_plates:
-            logger.warning(f"User {user_id}: Пластины не найдены")
-            await query.edit_message_text("Пластины не найдены.")
-            return ConversationHandler.END
-        keyboard = []
-        for p in all_plates:
-            name = p['name']
-            if name in context.user_data["ferma_items"]:
-                quantity = context.user_data["ferma_items"][name]["quantity"]
-                button_text = f"{name} (выбрано: {quantity})"
-            else:
-                button_text = name
-            keyboard.append([InlineKeyboardButton(button_text, callback_data=f"plate_{name}")])
-        keyboard.append([InlineKeyboardButton("Отправить отчёт", callback_data="submit")])
+        # Сначала показываем список категорий
+        material_categories = caches.get("material_categories", [])
+        keyboard = [[InlineKeyboardButton(cat, callback_data=f"matcat_{cat}")] for cat in material_categories]
         keyboard.append([InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")])
-        await query.edit_message_text("Выберите пластину:", reply_markup=InlineKeyboardMarkup(keyboard))
-        return FERMA_PLATE_TYPE
+        await query.edit_message_text("Выберите категорию материалов:", reply_markup=InlineKeyboardMarkup(keyboard))
+        return FERMA_MATERIAL_CAT
+    else:
+        categories, category_to_plates = parse_plate_categories_and_plates()
+        context.user_data["ferma_plate_categories_list"] = categories
+        context.user_data["ferma_category_to_plates"] = category_to_plates
+        keyboard = [[InlineKeyboardButton(cat, callback_data=f"cat_{cat}")] for cat in categories]
+        keyboard.append([InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")])
+        await query.edit_message_text("Выберите категорию пластин:", reply_markup=InlineKeyboardMarkup(keyboard))
+        return FERMA_CAT
+
+async def select_ferma_material_category(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    query = update.callback_query
+    await query.answer()
+    if query.data == "main_menu":
+        from handlers.start import back_to_menu
+        await back_to_menu(update, context)
+        return ConversationHandler.END
+    if not query.data.startswith("matcat_"):
+        await query.edit_message_text("Ошибка. Неизвестная категория.")
+        return ConversationHandler.END
+    cat = query.data.replace("matcat_", "")
+    context.user_data["ferma_material_category"] = cat
+    materials = get_materials_by_category(cat)
+    reply_markup = build_materials_keyboard_ferma(materials, context.user_data.get("ferma_mat_inputs", {}), show_submit=True)
+    await query.edit_message_text(f"Выберите материал из категории '{cat}':", reply_markup=reply_markup)
+    return FERMA_MATERIAL
+
+def build_materials_keyboard_ferma(materials, selected, show_submit=False):
+    keyboard = []
+    for m in materials:
+        mat_id = str(m.get("ID") or m.get("id"))
+        name = m.get("Наименование") or m.get("name")
+        unit = m.get("Ед. измерения", m.get("unit", "шт"))
+        qty = selected.get(mat_id, {}).get("quantity", "")
+        label = f"{name} ({qty})" if qty else f"{name} ({unit})"
+        keyboard.append([InlineKeyboardButton(label, callback_data=f"mat_{mat_id}")])
+    if show_submit:
+        keyboard.append([InlineKeyboardButton("Отправить отчёт", callback_data="submit")])
+    keyboard.append([InlineKeyboardButton("Вернуться к категориям", callback_data="back_to_cat")])
+    keyboard.append([InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")])
+    return InlineKeyboardMarkup(keyboard)
 
 async def select_ferma_material(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
     await query.answer()
-
-    # Тоже для base64, НЕ для "submit"
     if query.data == "submit":
         return await submit_ferma(update, context)
-
-    raw = decode_callback_data(query.data)
-    material = raw.replace("mat_", "")
-    context.user_data["ferma_current_item"] = material
-    direction = get_project_direction(context.user_data.get("ferma_project_tag", ""))
-    materials = [m for m in get_materials_by_direction(direction) if "Фермы" in m.get("Тип сделки", "").split()]
-    unit = next((m['unit'] for m in materials if m['name'] == material), "шт")
-    await query.edit_message_text(f"Введите количество для {material} ({unit}):")
-    return FERMA_QUANTITY
-
-
-async def select_plate_type(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    query = update.callback_query
-    await query.answer()
-    user_id = update.effective_user.id
+    if query.data == "back_to_cat":
+        # Вернуться к списку категорий
+        material_categories = caches.get("material_categories", [])
+        keyboard = [[InlineKeyboardButton(cat, callback_data=f"matcat_{cat}")] for cat in material_categories]
+        keyboard.append([InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")])
+        await query.edit_message_text("Выберите категорию материалов:", reply_markup=InlineKeyboardMarkup(keyboard))
+        return FERMA_MATERIAL_CAT
     if query.data == "main_menu":
         from handlers.start import back_to_menu
         await back_to_menu(update, context)
         return ConversationHandler.END
-    elif query.data == "submit":
-        return await submit_ferma(update, context)
-    plate = query.data.replace("plate_", "")
-    context.user_data["ferma_current_item"] = plate
-    from sheets import caches
-    all_plates = []
-    for plate_type in caches["plate_types"]:
-        all_plates.extend(get_plates_by_type(plate_type))
-    unit = next((p['unit'] for p in all_plates if p['name'] == plate), "шт")
-    await query.edit_message_text(f"Введите количество для {plate} ({unit}):")
-    return FERMA_QUANTITY
+    if query.data.startswith("mat_"):
+        mat_id = query.data.replace("mat_", "")
+        context.user_data["ferma_current_material_id"] = mat_id
+        cat = context.user_data.get("ferma_material_category", "")
+        materials = get_materials_by_category(cat)
+        material = next((m for m in materials if str(m.get("ID") or m.get("id")) == mat_id), None)
+        unit = material["Ед. измерения"] if material else "шт"
+        name = material["Наименование"] if material else mat_id
+        await query.edit_message_text(f"Введите количество для {name} ({unit}):")
+        return FERMA_QUANTITY
 
 async def enter_ferma_quantity(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    user_id = update.effective_user.id
     quantity_text = update.message.text.strip()
-    logger.info(f"User {user_id}: Введено количество: {quantity_text}")
     try:
         quantity = float(quantity_text.replace(",", "."))
         if quantity <= 0:
-            logger.warning(f"User {user_id}: Количество {quantity} не положительное")
             await update.message.reply_text("Количество должно быть положительным.")
             return FERMA_QUANTITY
     except ValueError:
-        logger.warning(f"User {user_id}: Неверное число для количества: {quantity_text}")
         await update.message.reply_text("Введите корректное число:")
         return FERMA_QUANTITY
-    item = context.user_data.get("ferma_current_item", "")
-    context.user_data.setdefault("ferma_items", {})[item] = {"quantity": quantity}
-    logger.info(f"User {user_id}: Добавлено {quantity} для {item}")
-    if context.user_data["ferma_type"] == "type_materials":
-        direction = get_project_direction(context.user_data["ferma_project_tag"])
-        materials = [m for m in get_materials_by_direction(direction) if "Фермы" in m.get("Тип сделки", "").split()]
-        reply_markup = build_material_keyboard(materials, context.user_data["ferma_items"], show_submit=True)
-        await update.message.reply_text("Выберите следующий материал или отправьте:", reply_markup=reply_markup)
-        return FERMA_MATERIAL
-    else:
-        from sheets import caches
-        all_plates = []
-        for plate_type in caches["plate_types"]:
-            all_plates.extend(get_plates_by_type(plate_type))
-        keyboard = []
-        for p in all_plates:
-            name = p['name']
-            if name in context.user_data["ferma_items"]:
-                quantity = context.user_data["ferma_items"][name]["quantity"]
-                button_text = f"{name} (выбрано: {quantity})"
-            else:
-                button_text = name
-            keyboard.append([InlineKeyboardButton(button_text, callback_data=f"plate_{name}")])
-        keyboard.append([InlineKeyboardButton("Отправить отчёт", callback_data="submit")])
-        keyboard.append([InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")])
-        await update.message.reply_text("Выберите следующую пластину или отправьте:", reply_markup=InlineKeyboardMarkup(keyboard))
-        return FERMA_PLATE_TYPE
+    item_id = context.user_data.get("ferma_current_material_id", "")
+    context.user_data.setdefault("ferma_mat_inputs", {})[str(item_id)] = {"quantity": quantity}
+    cat = context.user_data.get("ferma_material_category", "")
+    materials = get_materials_by_category(cat)
+    reply_markup = build_materials_keyboard_ferma(materials, context.user_data["ferma_mat_inputs"], show_submit=True)
+    await update.message.reply_text("Выберите следующий материал или отправьте:", reply_markup=reply_markup)
+    return FERMA_MATERIAL
 
-async def submit_ferma(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+# --- Пластины (остаются без изменений) ---
+async def select_plate_category(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
     await query.answer()
-    user_id = update.effective_user.id
+    cat = query.data.replace("cat_", "")
+    context.user_data["ferma_plate_category"] = cat
+    category_to_plates = context.user_data.get("ferma_category_to_plates", {})
+    plates = category_to_plates.get(cat, [])
+    keyboard = []
+    for plate in plates:
+        plate_id = plate.get("ID") or plate.get("id", "")
+        plate_name = plate.get("Наименование") or plate.get("name")
+        unit = plate.get("Ед. измерения", plate.get("unit", "шт"))
+        qty = context.user_data.get("ferma_items", {}).get(str(plate_id), {}).get("quantity", "")
+        label = f"{plate_name} ({qty})" if qty else f"{plate_name} ({unit})"
+        keyboard.append([InlineKeyboardButton(label, callback_data=f"plate_{plate_id}")])
+    keyboard.append([InlineKeyboardButton("Отправить отчёт", callback_data="submit")])
+    keyboard.append([InlineKeyboardButton("Назад к категориям", callback_data="back_to_cat")])
+    keyboard.append([InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")])
+    await query.edit_message_text(f"Выберите пластину категории {cat}:", reply_markup=InlineKeyboardMarkup(keyboard))
+    return FERMA_PLATE
+
+async def select_ferma_plate(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    query = update.callback_query
+    await query.answer()
+    if query.data == "submit":
+        return await submit_ferma(update, context)
+    if query.data == "back_to_cat":
+        categories = context.user_data.get("ferma_plate_categories_list", [])
+        keyboard = [[InlineKeyboardButton(cat, callback_data=f"cat_{cat}")] for cat in categories]
+        keyboard.append([InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")])
+        await query.edit_message_text("Выберите категорию пластин:", reply_markup=InlineKeyboardMarkup(keyboard))
+        return FERMA_CAT
     if query.data == "main_menu":
         from handlers.start import back_to_menu
         await back_to_menu(update, context)
         return ConversationHandler.END
-    mat_inputs = context.user_data.get("ferma_items", {})
-    project_tag = context.user_data.get("ferma_project_tag", "unknown")
-    if not mat_inputs:
-        logger.warning(f"User {user_id}: Не выбраны материалы для списания")
-        await query.edit_message_text(
-            "Не выбраны материалы для списания.",
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")]])
-        )
+    if query.data.startswith("plate_"):
+        plate_id = query.data.replace("plate_", "")
+        context.user_data["ferma_current_item_id"] = plate_id
+        cat = context.user_data.get("ferma_plate_category", "")
+        category_to_plates = context.user_data.get("ferma_category_to_plates", {})
+        plates = category_to_plates.get(cat, [])
+        plate = next((p for p in plates if str(p.get("ID") or p.get("id")) == plate_id), None)
+        unit = plate.get("Ед. измерения", plate.get("unit", "шт")) if plate else "шт"
+        name = plate.get("Наименование", plate.get("name", plate_id)) if plate else plate_id
+        await query.edit_message_text(f"Введите количество для {name} ({unit}):")
+        return FERMA_QUANTITY
+
+# --- submit для обоих сценариев (материалы и пластины) ---
+async def submit_ferma(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    query = update.callback_query
+    await query.answer()
+    ferma_items = context.user_data.get("ferma_items", {})
+    ferma_mat_inputs = context.user_data.get("ferma_mat_inputs", {})
+    project_id = context.user_data.get("ferma_project_id", "")
+    project = next((p for p in get_projects_list(context.user_data.get("role", "")) if str(p["ID проекта"]) == project_id), {})
+    project_num = project.get("Номер договора", project_id)
+    direction = "Фермы"
+    fullname = get_fullname_by_login(context.user_data.get("login", ""))
+    records = []
+
+    # Сохраняем и материалы, и пластины
+    # Материалы:
+    for item_id, v in ferma_mat_inputs.items():
+        cat = None
+        # Найти название материала
+        for mat_cat in caches.get("material_categories", []):
+            mats = get_materials_by_category(mat_cat)
+            material = next((m for m in mats if str(m.get("ID") or m.get("id")) == item_id), None)
+            if material:
+                cat = material
+                break
+        name = cat.get("Наименование") if cat else item_id
+        records.append([
+            datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "Расход", fullname, "", direction,
+            name, v["quantity"], "", "", "", project_num
+        ])
+
+    # Пластины:
+    if ferma_items:
+        category_to_plates = context.user_data.get("ferma_category_to_plates", {})
+        id_to_name = {}
+        for cat_list in category_to_plates.values():
+            for plate in cat_list:
+                pid = str(plate.get("ID") or plate.get("id"))
+                pname = plate.get("Наименование") or plate.get("name")
+                id_to_name[pid] = pname
+        for item_id, v in ferma_items.items():
+            name = id_to_name.get(str(item_id), str(item_id))
+            records.append([
+                datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "Расход", fullname, "", direction,
+                name, v["quantity"], "", "", "", project_num
+            ])
+    if not records:
+        await query.edit_message_text("Не выбрано ни одного материала для списания.")
         return ConversationHandler.END
-    date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    login = str(context.user_data.get("login", "unknown"))  # Приводим к строке
-    employee_data = next((emp for emp in caches["employees"] if str(emp["Логин"]) == login), None)
-    user = employee_data["Ф.И.О"] if employee_data else login  # ФИО или логин
-    logger.debug(f"User {user_id}: Login={login}, Employee_data={employee_data}, User={user}")  # Отладка
-    direction = context.user_data.get("department", "Производство")
-    records = [[date, "Расход", user, "", direction, k, v["quantity"], "", "", "", project_tag] for k, v in mat_inputs.items()]
+
     if record_ferma_write_off(records):
-        text = f"Материалы списаны для проекта {project_tag} (отдел: {direction}):\n" + "\n".join([f"{k}: {v['quantity']}" for k, v in mat_inputs.items()])
-        await query.message.reply_text(  # Оставляем reply_text, как в твоей исходной версии
+        text = f"Материалы списаны для проекта {project_num} (отдел: {direction}):\n"
+        for r in records:
+            text += f"{r[5]}: {r[6]}\n"
+        await query.message.reply_text(
             text,
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")]])
         )
-        logger.info(f"User {user_id}: Успешно списаны элементы для проекта {project_tag}")
     else:
         await query.message.reply_text(
             "Ошибка при записи списания.",
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")]])
         )
-        logger.error(f"User {user_id}: Ошибка списания для проекта {project_tag}")
     return ConversationHandler.END

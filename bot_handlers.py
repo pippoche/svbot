@@ -23,19 +23,23 @@ def register_handlers(application: Application):
         entry_points=[CallbackQueryHandler(write_off.start_write_off, pattern="write_off")],
         states={
             write_off.SELECT_PROJECT: [
-                CallbackQueryHandler(write_off.select_project),  # pattern убран!
+                CallbackQueryHandler(write_off.select_project),
                 CallbackQueryHandler(write_off.manual_project, pattern="manual"),
                 MessageHandler(filters.TEXT & ~filters.COMMAND, write_off.manual_project_tag)
             ],
+            write_off.SELECT_CATEGORY: [
+                CallbackQueryHandler(write_off.select_category),
+            ],
             write_off.SELECT_MATERIAL: [
-                CallbackQueryHandler(write_off.enter_quantity, pattern=r"^(?!submit$|manual_material$).*"),
-                # ВСЁ, кроме submit и manual_material (то есть base64 материалы)
+                CallbackQueryHandler(write_off.select_material),
                 CallbackQueryHandler(write_off.manual_material, pattern="manual_material"),
                 CallbackQueryHandler(write_off.submit_materials, pattern="submit"),
-                MessageHandler(filters.TEXT & ~filters.COMMAND, write_off.manual_material_entry)
+                MessageHandler(filters.TEXT & ~filters.COMMAND, write_off.manual_material_entry),
+                MessageHandler(filters.TEXT & ~filters.COMMAND, write_off.enter_quantity)
             ],
-            write_off.ENTER_QUANTITY: [MessageHandler(filters.TEXT & ~filters.COMMAND, write_off.confirm_material)],
-            write_off.SUBMIT: [CallbackQueryHandler(write_off.submit_materials, pattern="submit")]
+            write_off.ENTER_QUANTITY: [
+                MessageHandler(filters.TEXT & ~filters.COMMAND, write_off.enter_quantity)
+            ],
         },
         fallbacks=[CallbackQueryHandler(start.back_to_menu, pattern="main_menu")],
         per_message=False
@@ -81,20 +85,34 @@ def register_handlers(application: Application):
         entry_points=[CallbackQueryHandler(ferma_write_off.start_ferma_write_off, pattern="ferma_write_off")],
         states={
             ferma_write_off.FERMA_PROJECT: [
-                CallbackQueryHandler(ferma_write_off.select_ferma_project)],  # pattern убран!
-            ferma_write_off.FERMA_TYPE: [CallbackQueryHandler(ferma_write_off.select_ferma_type, pattern=r"type_.*")],
+                CallbackQueryHandler(ferma_write_off.select_ferma_project)
+            ],
+            ferma_write_off.FERMA_TYPE: [
+                CallbackQueryHandler(ferma_write_off.select_ferma_type)
+            ],
+            # ДОБАВЬ вот этот блок!
+            ferma_write_off.FERMA_MATERIAL_CAT: [
+                CallbackQueryHandler(ferma_write_off.select_ferma_material_category)
+            ],
             ferma_write_off.FERMA_MATERIAL: [
-                CallbackQueryHandler(ferma_write_off.select_ferma_material),  # pattern убран!
-                CallbackQueryHandler(ferma_write_off.select_ferma_material, pattern="submit")],
-            ferma_write_off.FERMA_PLATE_TYPE: [
-                CallbackQueryHandler(ferma_write_off.select_plate_type),  # pattern убран!
-                CallbackQueryHandler(ferma_write_off.select_plate_type, pattern="submit")],
+                CallbackQueryHandler(ferma_write_off.select_ferma_material),
+                CallbackQueryHandler(ferma_write_off.submit_ferma, pattern="submit"),
+                MessageHandler(filters.TEXT & ~filters.COMMAND, ferma_write_off.enter_ferma_quantity)
+            ],
+            ferma_write_off.FERMA_CAT: [
+                CallbackQueryHandler(ferma_write_off.select_plate_category)
+            ],
+            ferma_write_off.FERMA_PLATE: [
+                CallbackQueryHandler(ferma_write_off.select_ferma_plate),
+                CallbackQueryHandler(ferma_write_off.submit_ferma, pattern="submit"),
+                MessageHandler(filters.TEXT & ~filters.COMMAND, ferma_write_off.enter_ferma_quantity)
+            ],
             ferma_write_off.FERMA_QUANTITY: [
-                MessageHandler(filters.TEXT & ~filters.COMMAND, ferma_write_off.enter_ferma_quantity)],
-            ferma_write_off.FERMA_SUBMIT: [CallbackQueryHandler(ferma_write_off.submit_ferma, pattern="submit")],
+                MessageHandler(filters.TEXT & ~filters.COMMAND, ferma_write_off.enter_ferma_quantity)
+            ],
         },
-        fallbacks=[CallbackQueryHandler(ferma_write_off.submit_ferma, pattern="main_menu")],
-        per_message=False,
+        fallbacks=[CallbackQueryHandler(start.back_to_menu, pattern="main_menu")],
+        per_message=False
     )
     application.add_handler(ferma_conv)
 

@@ -4,7 +4,7 @@ import datetime
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ContextTypes, ConversationHandler
 from sheets import get_projects_list, get_instruments, record_instrument_transaction, caches
-from utils import build_project_keyboard, build_instrument_keyboard, decode_callback_data
+from utils import build_project_keyboard, build_instrument_keyboard
 
 logger = logging.getLogger(__name__)
 
