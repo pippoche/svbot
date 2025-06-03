@@ -90,14 +90,13 @@ def register_handlers(application: Application):
             ferma_write_off.FERMA_TYPE: [
                 CallbackQueryHandler(ferma_write_off.select_ferma_type)
             ],
-            # ДОБАВЬ вот этот блок!
             ferma_write_off.FERMA_MATERIAL_CAT: [
                 CallbackQueryHandler(ferma_write_off.select_ferma_material_category)
             ],
             ferma_write_off.FERMA_MATERIAL: [
                 CallbackQueryHandler(ferma_write_off.select_ferma_material),
                 CallbackQueryHandler(ferma_write_off.submit_ferma, pattern="submit"),
-                MessageHandler(filters.TEXT & ~filters.COMMAND, ferma_write_off.enter_ferma_quantity)
+                MessageHandler(filters.TEXT & ~filters.COMMAND, ferma_write_off.enter_ferma_material_quantity)
             ],
             ferma_write_off.FERMA_CAT: [
                 CallbackQueryHandler(ferma_write_off.select_plate_category)
@@ -105,10 +104,11 @@ def register_handlers(application: Application):
             ferma_write_off.FERMA_PLATE: [
                 CallbackQueryHandler(ferma_write_off.select_ferma_plate),
                 CallbackQueryHandler(ferma_write_off.submit_ferma, pattern="submit"),
-                MessageHandler(filters.TEXT & ~filters.COMMAND, ferma_write_off.enter_ferma_quantity)
+                MessageHandler(filters.TEXT & ~filters.COMMAND, ferma_write_off.enter_ferma_plate_quantity)
             ],
-            ferma_write_off.FERMA_QUANTITY: [
-                MessageHandler(filters.TEXT & ~filters.COMMAND, ferma_write_off.enter_ferma_quantity)
+            # ДОБАВЬ вот этот блок!
+            ferma_write_off.FERMA_PLATE_QUANTITY: [
+                MessageHandler(filters.TEXT & ~filters.COMMAND, ferma_write_off.enter_ferma_plate_quantity)
             ],
         },
         fallbacks=[CallbackQueryHandler(start.back_to_menu, pattern="main_menu")],

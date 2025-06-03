@@ -26,18 +26,27 @@ async def start_instrument(update: Update, context: ContextTypes.DEFAULT_TYPE) -
 async def select_project(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
     await query.answer()
-    raw = decode_callback_data(query.data)
-    tag = raw.replace("proj_", "")
-    context.user_data["instrument_project"] = project
-    keyboard = [
-        [InlineKeyboardButton("Приход", callback_data="Приход")],
-        [InlineKeyboardButton("Расход", callback_data="Расход")],
-        [InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")]
-    ]
-    await query.edit_message_text(
-        f"Выбран проект: {project}. Выберите тип операции:", reply_markup=InlineKeyboardMarkup(keyboard)
-    )
-    return TRANSACTION_TYPE
+    if query.data.startswith("proj_"):
+        project_id = query.data.replace("proj_", "")
+        projects = get_projects_list(context.user_data.get("role", ""))
+        project = next((p for p in projects if str(p.get("ID проекта")) == project_id), None)
+        if not project:
+            await query.edit_message_text("Проект не найден.")
+            return ConversationHandler.END
+        project_num = project.get("Номер договора", project_id)
+        context.user_data["instrument_project"] = project_num
+        keyboard = [
+            [InlineKeyboardButton("Приход", callback_data="Приход")],
+            [InlineKeyboardButton("Расход", callback_data="Расход")],
+            [InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")]
+        ]
+        await query.edit_message_text(
+            f"Выбран проект: {project_num}. Выберите тип операции:", reply_markup=InlineKeyboardMarkup(keyboard)
+        )
+        return TRANSACTION_TYPE
+    else:
+        await query.edit_message_text("Ошибка: неверный формат данных.")
+        return ConversationHandler.END
 
 async def transaction_type(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query

@@ -18,7 +18,6 @@ def build_material_keyboard(materials, mat_inputs=None, show_submit=False):
     keyboard = []
     keyboard.append([InlineKeyboardButton("Ввести материал вручную", callback_data="manual_material")])
     for mat in materials:
-        # Поддерживаем оба варианта — если структура вдруг разная
         mat_id = str(mat.get("ID") or mat.get("id"))
         mat_name = mat.get("Наименование", mat.get("name"))
         unit = mat.get("Ед. измерения", mat.get("unit", "шт"))
@@ -27,6 +26,7 @@ def build_material_keyboard(materials, mat_inputs=None, show_submit=False):
         keyboard.append([InlineKeyboardButton(label, callback_data=f"mat_{mat_id}")])
     if show_submit and mat_inputs:
         keyboard.append([InlineKeyboardButton("Отправить отчёт", callback_data="submit")])
+    # КНОПКУ "Вернуться в меню" добавляем только один раз — в конце!
     keyboard.append([build_cancel_button()])
     return InlineKeyboardMarkup(keyboard)
 
@@ -44,7 +44,12 @@ def build_instrument_keyboard(instruments, selected_instruments, show_submit=Tru
     return InlineKeyboardMarkup(keyboard)
 
 def build_cancel_button():
+    # Единая функция для всех клавиатур, если что менять текст — здесь!
     return InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")
 
 def get_cancel_keyboard():
     return InlineKeyboardMarkup([[build_cancel_button()]])
+
+def decode_callback_data(data):
+    # Универсальный декодер: proj_*, mat_*, cat_*, inst_* и т.д.
+    return data.split("_", 1)[-1] if "_" in data else data

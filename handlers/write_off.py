@@ -53,6 +53,7 @@ async def select_project(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         await query.edit_message_text(f"Проект '{tag}' не найден.")
         return ConversationHandler.END
     context.user_data["project_id"] = tag
+    context.user_data["project_num"] = project["Номер договора"]  # <--- для записи названия!
     logger.info(f"Выбран проект '{project['Номер договора']}' (ID: {tag}) со статусом '{project['Статус']}'")
     material_categories = caches.get("material_categories", [])
     keyboard = [[InlineKeyboardButton(cat, callback_data=f"cat_{cat}")] for cat in material_categories]
@@ -80,8 +81,10 @@ async def select_category(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
         await query.edit_message_text("Нет материалов в выбранной категории.")
         return ConversationHandler.END
     reply_markup = build_material_keyboard(materials, context.user_data.get("mat_inputs", {}), show_submit=True)
+    # !!! Только одна кнопка "Вернуться в меню" !!!
     keyboard = list(reply_markup.inline_keyboard) if reply_markup else []
     keyboard.append([InlineKeyboardButton("Вернуться к категориям", callback_data="back_to_categories")])
+    # НЕ добавлять вторую "Вернуться в меню", если она уже есть (build_material_keyboard её не добавляет!)
     keyboard.append([InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")])
     await query.edit_message_text(f"Выберите материалы из категории '{cat}':", reply_markup=InlineKeyboardMarkup(keyboard))
     return SELECT_MATERIAL
@@ -150,7 +153,9 @@ async def manual_project_tag(update: Update, context: ContextTypes.DEFAULT_TYPE)
         await update.message.reply_text("Проект не найден. Попробуйте снова:")
         return SELECT_PROJECT
     project_id = project["ID проекта"]
+    project_num = project["Номер договора"]
     context.user_data["project_id"] = project_id
+    context.user_data["project_num"] = project_num
     logger.info(f"Вручную выбран проект '{tag}' (ID: {project_id}) со статусом '{project['Статус']}'")
     material_categories = caches.get("material_categories", [])
     keyboard = [[InlineKeyboardButton(cat, callback_data=f"cat_{cat}")] for cat in material_categories]
@@ -174,8 +179,7 @@ async def submit_materials(update: Update, context: ContextTypes.DEFAULT_TYPE) -
     await query.answer()
     mat_inputs = context.user_data.get("mat_inputs", {})
     project_id = context.user_data.get("project_id", "unknown")
-    project = next((p for p in get_projects_list(context.user_data.get("role", "")) if str(p["ID проекта"]) == project_id), {})
-    project_num = project.get("Номер договора", project_id)
+    project_num = context.user_data.get("project_num", project_id)  # <--- Берём название!
     department = context.user_data.get("department", "Строительство")
     # Собираем материалы всех категорий!
     all_materials = {}
@@ -190,19 +194,21 @@ async def submit_materials(update: Update, context: ContextTypes.DEFAULT_TYPE) -
     date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     login = str(context.user_data.get("login", "unknown"))
     fullname = get_fullname_by_login(login)
-    records = [
-        [date, "Расход", fullname, "", department, id_to_name.get(str(mat_id), str(mat_id)), info["quantity"], "", "", "", project_num]
-        for mat_id, info in mat_inputs.items()
-    ]
+    records = []
+    for mat_id, info in mat_inputs.items():
+        mat_name = id_to_name.get(str(mat_id), str(mat_id))
+        records.append([date, "Расход", fullname, "", department, mat_name, info["quantity"], "", "", "", project_num])
     if record_write_off(records):
         text = f"Материалы списаны для проекта {project_num} (отдел: {department}):\n" + "\n".join(
             f"{id_to_name.get(str(mat_id), str(mat_id))}: {info['quantity']}" for mat_id, info in mat_inputs.items()
         )
         await query.edit_message_text(
             text,
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")]]))
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")]])
+        )
     else:
         await query.edit_message_text(
             "Ошибка при записи списания.",
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")]]))
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Вернуться в меню", callback_data="main_menu")]])
+        )
     return ConversationHandler.END
